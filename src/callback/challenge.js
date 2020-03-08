@@ -50,4 +50,11 @@ fetchData(API, (errorUno, dataUno) => {
             console.log(dataTres.dimension)
         });
     })     
-}) // Se recomienda no tener más de tres callbacks.
+}); // Se recomienda no tener más de tres callbacks.
+/* Ventaja: 
+    1) Permite garantizar la ejecución de las funciones.
+    2) Los callbacks son universales. Corren en cualquier navegador.
+Desventaja:
+    1) La inplementación puede llegar a ser muy tosca. Se llega al callback hell.
+    2) Flujo poco intuitivo.
+    3) Manejo de error muy tosco. Cuesta manejar una excepción. */

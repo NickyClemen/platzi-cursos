@@ -13,3 +13,12 @@ fetchData(API)
     })
     .then(data => console.log(data.dimension))
     .catch(error => console.log(error));
+
+/* Ventajas:
+    1) Son fáciles de enlazar.
+    2) Mejora la legibilidad.
+    3) Es poderoso.
+Desventajas:
+    1) No maneja errores.
+    2) Propenso a errores si no se tiene en cuenta los llamados.
+    3) Se refiere de un polyfile (transpilador) para que funcione en todos los navegadores. */
