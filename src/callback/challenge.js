@@ -1,5 +1,6 @@
 /* Se instala una dependencia para hacer peticiones: npm install xmlhttprequest */
 let XMLHpptRequest = require('xmlhttprequest').XMLHttpRequest;
+const API = 'https://rickandmortyapi.com/api/character/'; 
 
 function fetchData(url_api, callback) {
     let xhttp = new XMLHpptRequest(); /* Creado por Microsoft y adapatado al standard. */
@@ -16,13 +17,13 @@ function fetchData(url_api, callback) {
                 3) 2: Dónde ya se cargó.
                 4) 3: Si hay alguna descarga/información.
                 5) 4: Completada. Success. */
-                if(http.readyState === 4) {
+                if(xhttp.readyState === 4) {
                     // readyState devuelve el estado de la petición.
                     if(xhttp.status === 200){
                         /* Callback utiliza un standard denteo de Node, que permite
                         decir que el primer parámetro que se le pasa es el error, y el segundo es el resultado
                         del callback. */
-                        callback(null, JSON.parse(xhtto.responseText))
+                        callback(null, JSON.parse(xhttp.responseText))
 
                     } else {
                         const error = new Error(`Error ${ url_api }`);
@@ -37,3 +38,16 @@ function fetchData(url_api, callback) {
 
         xhttp.send(); // Se envía la solicitud.
 }
+
+fetchData(API, (errorUno, dataUno) => {
+    if (errorUno) return console.log(errorUno);
+    fetchData(API + dataUno.results[0].id, (errorDos, dataDos) => {
+        if (errorDos) return console.log(errorDos);
+        fetchData(dataDos.origin.url, (errorTres, dataTres) => {
+            if (errorTres) return console.log(errorTres);
+            console.log(dataUno.info.count);
+            console.log(dataDos.name);
+            console.log(dataTres.dimension)
+        });
+    })     
+}) // Se recomienda no tener más de tres callbacks.
