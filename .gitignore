@@ -1,0 +1,5 @@
+movies-api/node_modules
+movies-api/.env
+movies-api/.prettierrc.json
+movies-api/package-lock.json
+movies-api/.nyc_output
