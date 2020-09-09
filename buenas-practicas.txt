@@ -1,0 +1,105 @@
+Ejes que hacen a la calidad del código
+Características externas: Percibido por los users.
+Características internas: Cuando se interactúa con el código.
+    1) Legibilidad: Cuánto esfuerzo implica interpretar/entender lo que el código dice sin ejecutarlo (leerlo o interpretarlo).
+    Por ejemplo, la falta de identación.
+    2) Mantenibilidad: Cuánto esfuerzo supondrá adaptar el código a nuevos requerimientos.
+    3) Testeabilidad: Cupanto esfuerzo supondrá realizar pruebas sobre el código.
+
+Mejorar legibilidad
+    1) Tabulaciones (identaciones) para indicar a qué bloque pertenece las líneas.
+    2) Por convención, la llave de apertura comienzan al final de una condición.
+    3) Tener standards de codificación. Serie de reglas que dicen como se debe escribir el código. Genera código claro y consistente.
+    Evita que se pierda tiempo en decisiones triviales.
+    4) Apoyarse en un linter.
+
+Identificadores mnemotécnicos, específicos y precisos
+Identificador: Nombre que no existe en el lenguaje. Ejemplo: Variable, función, etc.
+Los identificadores tienen que evolucionar con el código.
+
+Código modular
+Tener el programa estructurado en bloques de código.
+Se pueden modularizar los que están dentro de ciclos, condicionales, expresiones de la condición si son muy complejas,
+código si hace cálculos complejos.
+
+Código reutilizable
+Código posible de utilizar en varios contextos.
+Se puede hacer con funciones que reciben parámetros, y retornan un valor.
+El copypaste es el peor enemigo.
+
+Código organizado
+Cómo está organizado dentro del sistema de archivos (cómo está dispuesto).
+    1) public: Los que son accesibles fuera del servidor.
+    2) src (source): Va el código fuente.
+    3) test: Test.
+    4) vendor/lib: Librerías externas.
+
+Vicios
+Harcoding: Escribir valores literales en lugar de identificadores. Hacerlo, implica destabilizar el sistema al tocar el
+código para modificarlo.
+Oculta información.
+
+Efectos colaterales del software
+Modificaciones inesperadas durante el flujo del programa.
+Se recomienda no usar variables globales.
+
+Principios SOLID
+Acrónimo que hace referencia a cinco principios básicos para OOP. Ayuda a crear código más mantenible a futuro.
+    1) Single Responsibility Principle (SRP) - Principio de resposabilidad única: "Una clase debe tener sólo una razón para
+    cambiar". Una clase debe tener una sola responsabilidad (muy acotada). Alta cohesión. Hace más fácil detectar problemas al
+    tener las clases una única responsabilidad. Mejora la reutilización del código. División de responsabilidades.
+    2) Open/Closed Principle - Principio de abierto/cerrado: "Una entidad de software debe quedarse abierta para su extensión, pero
+    cerrada para su modificación". Forma de estructurar las clases, a modo de poder adaptarse a nuevos requerimientos sin alterar
+    su estructura interna. Es importante para software de mediano/gran tamaño.
+    3) Liskov Substitution Principle - Principio de sustitución de Liskov: "Cada clase que hereda de otra, puede usarse como su padre
+    sin necesidad de conocer las diferencias entre ellas". Polimorfismo. Hay que cuidar las jerarquías de clases.
+        a) la clase hija debe usar métodos de la clase padre únicamente.
+        b) La clase hija no debe alterar (sobreescribir) el comportamiento de los métodos de la clase padre.
+    4) Interface Segregation Principle - Principio de segregación de interfaces: "Los clientes de un programa dado, sólo deberían
+    conocer de aquellos métodos que realmente van a usar". Estructurar interfaces. Para evitar que clases se vean obligadas a recibir
+    métodos que no van a usar.
+    5) Depedency Inversion Principle - Principio de inversión de dependencias: "Los módulos de alto nivel no deben depender
+    de los de bajo nivel, amvos deben depender de abstracciones. Las abstracciones, no deben depeder de los detalles, los detalles
+    deben depender de las abstracciones". Ayuda a definir como se vinculan las diferentes clases que tienen que darse servicio
+    a otras. Existen clases de bajo (asisten a las de alto nivel) y alto nivel (lógica de negocio). La idea, es lograr que la
+    dependencia no esté tan arraigada. Conviene que las clases de bajo nivel, sean interfaces.
+
+Patrones de diseño: Soluciones conceptuales que se aplican a la hora de diseñar las clases.
+    1) Creación: Cómo se crean nuevas instancias de los objetos.
+    2) Estructurales: Cómo se deben crear los objetos.
+    3) Comportamiento: Cómo se deben comportar los objetos.
+
+    a) Singleton: Se puede pensar de creación como comportamiento. Una clase que tenga una sola instancia en toda la aplicación.
+    Se utiliza para ahorrar recursos.
+    b) Factory: Patrón de creación. Se utiliza cuando la creación de un objeto es un proceso muy complejo.
+    c) Command: Patrón de comportamiento. Se utiliza cuando existe una aplicación compleja que debe ser utilizada desde diferentes
+    puntos de entrada.
+
+Testing automatizado
+Programas que testean otros, y reportan los bugs.
+    1) Unitarios (Unit testing): Toma una porción de cídigo, aislarla, y validar su comportamiento. Fmenta el refactoring,
+    facilita la integración, y la documentación.
+        a) assert: Deja acentado lo que se espera que haga el software.
+    2) Integración.
+
+Test Driven Development (TDD) - Desarrollo guiado por pruebas: Primero se escriben las pruebas, y luego el código.
+    1) Tomar una funcionalidad a testear. Si falla, escribir el mínimo código necesario para que pase.
+    2) Se vuelve a revisar el código para eliminar la redundancia (refactor).
+        a) Escribir un test que falle.
+        b) Hacer que el código funcione.
+        c) Eliminar la redundancia.
+
+Pull request: Herramienta desarrollado por GitHub. Generar una solicitud al dueño del repositorio para ofrecerle una mejora, y
+decidir si la incorpora o la descarta.
+    a) Fork: Bifurcación. Hacer una copia del código, y trabajar hasta que es terminado el cambio, y generar el pull request.
+
+Documentación
+Dejar por escrito cómo está funcionando el código.
+    1) ¿Qué documentar? Lo mínimo que otra persona tiene que saber para poder entenderlo.
+    2) ¿Cómo documentar? Depende del destinatario. Se puede utiilizar UML.
+    3) ¿Dónde documentar?
+        a) Dentro del código.
+        b) Dentro de otro repositorio.
+    4) ¿Cuándo documentar?
+        a) Se recomienda a la par del código.
+        b) Cuando se pudo resolver un problema.
