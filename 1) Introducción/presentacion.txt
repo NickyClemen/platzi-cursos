@@ -1,0 +1,10 @@
+No fundamentos
+1) Promesas (nivel PRO)
+2) Getters, setters. Se dedica a capturar nombres de variables, y su valor.
+3) Proxies. Se dedica a interceptar llamadas.
+4) Generadores.
+
+Cómo funciona
+1) Javascript engine.
+2) Herencia prototipal.
+3) Event loop.

@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>PlatziMediaPlayer.js</title>
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="./assets/index.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>PlatziMediaPlayer.js</h1>
+      <p>An extensible media player.</p>
+    </header>
+
+    <main class="container">
+      <video class="movie">
+        <source src="./assets/BigBuckBunny.mp4" />
+      </video>
+
+      <button>Play/Pause</button>
+    </main>
+
+    <script>
+
+      /* npm init -y -> Le va a contestar SÍ a todas las preguntas que npm hace. *
+      npm i -D live-server -> Significa que lo que se instale, es sólo de desarrollo. */
+
+      const video = document.querySelector("video");
+      const button = document.querySelector("button");
+
+      function MediaPlayer(config) {
+
+        this.media = config.el;
+
+      }
+
+      MediaPlayer.prototype.play = function() {
+
+        if (this.media.paused){
+
+          this.media.play();
+
+        } else {
+
+          this.media.pause();
+
+        }
+
+      } // -> Agrega un método.
+
+      const player = new MediaPlayer({ el: video });
+
+      button.onclick = () => player.play();
+      /* Todos los elementos del DOM tiene una API. 
+      Buscar las API de HTMLMediaElement. */
+
+    </script>
+  </body>
+</html>
