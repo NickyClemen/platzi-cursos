@@ -1,0 +1,15 @@
+{
+  "name": "fundamentos-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "apuntes.js",
+  "scripts": {
+    "watch": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
