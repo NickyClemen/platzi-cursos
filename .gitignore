@@ -1,0 +1,14 @@
+ecommerce/.nyc_output
+ecommerce/node_modules
+ecommerce/.env
+ecommerce/package-lock.json
+
+express-app-gen/bin
+express-app-gen/node_modules
+express-app-gen/package-lock.json
+
+hello-world/node_modules
+hello-world/package-lock.json
+
+template-engine/node_modules
+template-engine/package-lock.json
