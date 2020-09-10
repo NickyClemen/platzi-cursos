@@ -1,0 +1,14 @@
+¿Qué son y para qué nos sirven las arquitecturas CSS?
+Objetivos:
+    a) Predecible: Si establezco una regla, debe cumplirse.
+    b) Reutilizable.
+    c) Mantenible.
+    d Escalable.
+
+Buenas prácticas:
+    a) Establecer reglas.
+    b) Explicsar la estructura base.
+    c) Establecer stándares de codificación.
+    d) Evitar largas hojas de estilo.
+    e) Documentación.
+

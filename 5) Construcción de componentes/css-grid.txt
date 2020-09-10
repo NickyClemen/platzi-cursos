@@ -1,0 +1,10 @@
+Nuestro nuevo sistema de layout: CSS Grid.
+CSS Grid es nativo de CSS.
+Sirve para poder manejar el layout, ya que no solamente sirve para mover todos los componentes en el 
+grid, sino para manipular todo el sistema de layout.
+
+    display: grid | inline-grid;
+
+https://labs.jensimmons.com/
+https://cssgridgarden.com/#es
+https://css-tricks.com/snippets/css/complete-guide-grid/

@@ -1,0 +1,28 @@
+Tipos de selectores, pseudo-clases y pseudo-elementos
+Selectores
+    1) * -> Universal. Se aplican los cambios a todos los elementos de HTML.
+    2) h1 -> Tipo. No son tan recomendables cuando se están trabajando en aplicaciones grandes,
+    ya que efectan a todos los elementos que utilicen éstas etiquetas.
+    3) .salado -> Clase. Identificador que se puede utilizar en los elementos que se quieran 
+    modificar.
+    4) #id -> ID. No es recomendable trabajar ID (aumenta la especificidad). Afecta a un sólo elemento.
+
+Pseudo-clases: Añaden especificidad al momento de modificar un elemento.
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
+    p:first-child {
+    } -> Se le aplican las propiedades al primer hijo.
+
+    p:last-child {
+    } -> Se le aplican las propiedades al último hijo.
+
+    p:nth-child(2n) {     
+    } ->  Se le aplican los estilos al elemento especificado.
+        n es un número cualquiera.
+        th son los únicos ordinarios en inglés.
+        n es número.
+
+Pseudo-elementos: Funcionan parecido a las pseudo-clases, primero, por cómo se declaran (::), y
+sirven para añadir estilos a una parte concreta del elemento.  
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+    ::need-mode "(before)tal vez" ::after
+

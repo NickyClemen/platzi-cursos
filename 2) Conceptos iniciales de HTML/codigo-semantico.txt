@@ -1,0 +1,23 @@
+La importancia del código semántico
+
+Es importante mantener la semántica de las etiquetas de HTML para ordenar el código.
+Semántica HTML: Darle un sentido y una estructura a lo que se está haciendo.
+Ayuda a la accesibilidad del sitio, ya que las personas con algún tipo de discapacidad, utilizan 
+un screen reader, el cuál, lee las etiquetas del sitio para interpretarlo.
+La etiqueta DIV casi que funciona para varias cosas, pero no es lo más ideal, ya que le resta
+sentido.
+
+<header> -> Cabecera. Generalmente se ve en la parte superior de las aplicaciones. Se puede
+poner cualquier tipo de contenido.
+<section> -> Sección. Se puede crear cualquier tipo de contenido.
+<footer> -> Pie de páginas.
+
+<em> -> Coloca al letra en itálica. Se enforca en el énfasis que se le está dando a la palabra.
+<i> -> Coloca al letra en itálica. Se concentra en el tipo de font, no se le da enfásis.
+
+<strong> -> Coloca al letra en negrita. Se concentra en el tipo de font, no se le da enfásis.
+<b> -> Coloca al letra en negrita. Se concentra en el tipo de font, no se le da enfásis.
+
+
+
+      

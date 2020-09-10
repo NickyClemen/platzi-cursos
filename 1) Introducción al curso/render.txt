@@ -1,0 +1,20 @@
+DOM, CSSOM, Render Tree y el proceso de renderizado de la web
+
+1) DOM (Document Object Model): El navegador traduce el HTML en objetos. 
+2) CSSOM (CSS Object Model): El navegador traduce el CSS en objetos
+3) Render Tree: Es la conjunción del DOM y el CSSOM para poder renderizar la página web.
+
+Cinco pasos para la transformación del código en objetos.
+Bytes: Toma el código y lo transforma en bytes.
+    -> Characters: Tranforma en caracteres dependiendo de la codificación (ej. utf-8) que se le pase.
+        -> Tokens: Son los tags del HTML. Verificar la documentación de la W3C o de la WHATWG. 
+            -> Nodes: Son los objetosque entiende el navegador.
+                -> DOM: Toma todos los nodos y los presenta dependiendo de la organización que haya en el
+                código.
+
+1) Procesa el HTML y construye el DOM.
+2) Procesa el CSS y contruye el CSSOM.
+3) DOM + CSSOM = Render Tree.
+4) Ejecuta el diseño en el Render Tree.
+5) Pinta el nodo en la pantalla.
+

@@ -1,0 +1,10 @@
+¿Qué son y para qué nos sirven HTML y CSS?
+
+HTML (Hyper Text Markup Language)
+Es un lenguaje de marcado usado para decirle al navegador como estructurar las páginas web.
+https://htmlreference.io/
+
+CSS (Cascading Style Sheets)
+Es un lenguaje que permite crear páginas web con un diseño agradable para los usuarios.
+https://cssreference.io/
+

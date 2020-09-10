@@ -1,0 +1,6 @@
+Flexbox
+En CSS, es muy importante pensar en los términos CONTAINER e ITEM, no importa en lo que se vaya a 
+trabajar.
+El container está un DISPLAY (FLEX o INLINE-FLEX), ya que FLEXBOX es nativo de CSS.
+
+Cuando es una columna, JUSTIFY-CONTENT cambia a VERTICAL y ALIGN-ITEMS a HORIZONTAL.

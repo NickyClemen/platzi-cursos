@@ -1,0 +1,12 @@
+Tipos de errores en HTML, debugging y servicio de validación de etiquetas
+HTML es un lenguaje interpretado.
+El navgador es bastante permisivo, por lo que nunca avisa que hay errorer en el código.
+
+Hay dos errores:
+    1) Sintácticos: Son errores de escritura en el código que hacen que el programa no funcione.
+    2) Lógicos: En éstos errores, la sintáxis es correcta, pero el código no hace lo que debería, 
+    por lo que el programa funciona de forma incorrecta.
+
+Sistema de validación de etiquetas
+https://validator.w3.org/
+

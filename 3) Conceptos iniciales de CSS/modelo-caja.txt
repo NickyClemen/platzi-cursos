@@ -1,0 +1,17 @@
+Modelo de caja
+Ésta compuesto por cuatro elementos:
+    1) MARGIN: Entre el contenido y el navegador.
+    2) BORDER: Entre el padding y el margen.
+    El BORDER, siempre nos va a afectar el modelo de caja
+    (se suma al WIDTH).
+    3) PADDING: Entre el borde y el contenido.
+    El PADDING, siempre nos va a afectar el modelo de caja
+    (se suma al WIDTH).
+    4) Content.
+
+WIDTH: Ancho.
+HEIGHT: Alto.
+BOX-SIZING: BORDER-BOX -> Propiedad que se utiliza si no se quiere
+que el BORDER y el PADDING se sumen al WIDTH.
+
+
