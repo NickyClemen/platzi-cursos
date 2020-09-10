@@ -1,0 +1,10 @@
+handle-session/node_modules
+jwt-utilities/node_modules
+
+movies-api/.nyc_output
+movies-api/coverage
+movies-api/node_modules
+movies-api/.env
+movies-api/.eslintrc.json
+movies-api/.prettierrc.json
+movies-api/packacge-lock.json
