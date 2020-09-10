@@ -1,0 +1,323 @@
+1. TERMINAL Y LÍNEA DE COMANDOS
+
+QUÉ ES LA TERMINAL Y PARA QUÉ SIRVE
+
+ls /usr/bin: Cuántos ejecutables binarios hay en la PC.
+
+ÁRBOL DE DIRECTORIOS Y NAVEGACIÓN
+
+Cada comando se ejecuta por sí mismo.
+Cada comando tiene diferentes banderas y parámetros.
+Las banderas pueden ir escritas (depende del ejecutable) juntas, o escritas por separado.
+./ es una forma de apuntarse a uno mismo.
+../ al directorio padre (solamente hay un directorio padre). Listan los directorios de los que dependo, y los que dependen de mí. Le da mucha seguridad al ejecutable.
+tab autocompleta las rutas (te da las opciones).
+Se puede ir a un directorio utilizando una ruta relativa. También se lo puede citar de manera absoluta.
+
+ls: Lista los archivos y directorios. ls permite las banderas todas juntas. 
+	ls -l: Lista hacía abajo. Refleja los permisos, el autor, a qué 	grupo pertenece, y el tamaño, y los archivos.
+	ls -lh: Devuelve la información de forma que sea legible para 	humanos.
+	ls -lha: Lista hacía abajo de forma legible y muestra archivos 	ocultos.
+	ls -l .. : Enlista otro directorio.
+pwd (working directory): En qué posición estoy del árbol de directorios.
+tree: Dice cuáles son los directorios que están hacía abajo. No muestra los archivos. 
+cd (change directory) [nombre del directorio]: Sirve para moverse entre directorios.
+	cd . : Cambia de directorio (a mí mismo).
+	cd .. : Cambia al directorio padre.
+	~: Home (a partir de dónde nace mi árbol de directorios). cd sin 		parámetros redirecciona igual.
+
+MANIPULACIÓN Y MODIFICACIÓN DEL ÁRBOL DE DIRECTORIOS
+
+mkdir [nombre] (make directory): Crea un directorio.
+touch [nombre.extensión]: Crea un archivo. Si no existe, lo crea en blanco. Si ya existe, modifica la fecha de creación y de acceso.
+	{}: Se puede crear más de un archivo.
+Crtl+l o clear en consola: Limpia la pantalla.
+mv [qué quiero modificar][qué se modifica]: (no va a renombrar el archivo, va a moverlo) Cambiar el nombre de los directorios.
+	mv [nombre del archivo] [nombre del directorio]: Mueve un archivo 	a otro directorio.
+rm [nombre del archivo]: Borrar el archivo.
+	rm -rf [nombre del directorio](recursivamente): Borra un 		directorio y su contenido.
+man [comando]: Manual de los comandos en la consola.
+cp [nombre del archivo](copy).
+	cp [nombre del archivo] ../: Copia en otro directorio.
+pushd [nombre del directorio]: Ir a otro directorio por un atajo.
+popd: Vuelve al proyecto de origen.
+
+HERRAMIENTAS BÁSICAS
+
+open [nombre del archivo]: Abrir un archivo.
+more [nombre del archivo]: Saber más. Da las primeras diez líneas de un archivo.
+cat [nombre del archivo]: Concatena y muestra archivos. Imprime completo. Sirve para archivos chicos.
+tail [nombre del archivo]: Muestra las últimas líneas de un archivo.
+	tail -f (forever): Devuelve siempre la última línea del archivo que se está mandando.
+
+Son los más usados en string.
+Los dos tipos de archivo que se manejan, son binarios y de texto (ASCII).
+
+VARIABLES Y ENTORNO
+
+Cada vez que se abre la consola, se ejecuta un archivo que se llama bash.profile (en Mac), bash.rc en algunas distribuciones de Unix, que está en la Home.
+
+Son una serie de comandos, que más que nada es dar de alta unas variables para que siempre funcionen igual en todas las terminales.
+
+Todos los ejecutables en Linux tienen una serie de permisos, y son visibles al usuario (al menos al root).
+
+less [nombre del archivo]: Parecido al commando "more" pero permite salvar el movimiento en el fichero así como el movimiento hacia atrás.
+which [comando]: Dice dónde está el ejecutable de la terminal. 
+
+Éstos directorios para que se ejecuten, solamente hace falta escribirlos solos.
+Si estuviéramos en otro directorio, y se intentara ejecutar un archivo, no me va a dejar, me va a tirar el error de que el binario no está en los directorios permitidos.
+Necesita estar en una variable que se llama PATH (camino).
+Cada vez que tenga un programa nuevo, hay que asegurarse que todos sus ejecutables ésten en la variable PATH.
+
+Las variables en Unix se inicializan con (echo) $PATH.
+Las variables pueden cambiar para cada usuario.
+
+alias [nombre] = '[comandos a asignarle]': Ejecuta una serie de variables que se le pasa.
+alias tree = "'ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e  's/^//' -e 's/-/|/'"
+Encapsular los comandos de una ejecución.   
+
+STREAMS
+
+El flujo de cualquier programa consiste en un input y en un output (streams).
+Hay tres importantes: 
+	a) Standard input (STDIN).
+	b) Standard output (STDOUT).
+	c) Standard error (STDERR).
+Es muy importante que cada vez que un programa tenga un problema, lo notifique.
+
+Si se usa >> (si el archivo existe, comienza a escribir los valores justo al final) en vez de > (si no existe el archivo, l va a crear. Sino, lo sobreescribe), entonces el archivo se concatena en vez de sobreescribirse.
+
+Ctrl r da un prompt para buscar comandos que hayan sido utilizados en la ejecución.
+
+Ctrl c detiene la ejecución.
+
+PROCESOS DESDE LA TERMINAL
+
+top: Nos permite ver la lista de procesos.
+Un dato muy importante de los procesos, es su PID (process ID). Nos permite determinar qué proceso está fallando.
+	top -o: Ordena de otra manera los procesos.
+
+kill -9 [PID]: Nos permite matar un proceso. No pide confirmación.
+Mandar un proceso a background: php 1-streams.php 3 > salida.log 2>&1 &
+Devuelve el PID.
+
+Crtl c termina un proceso.
+
+Mandar un proceso a background y que al mismo tiempo se visualice en pantalla: php 1-streams.php 4 &
+
+Secuencia de procesos: php 1-streams.php 4; echo "hola"; php 1-streams.php 4. Se ejecuta cuando acaba el otro proceso.
+
+ls -l [prefijo]*: Muestra todos los archivos que comiencen con el prefijo.
+
+ps -wA (en Linux es ps -wS): Lista sin interacción de todos los procesos que se están ejecutando.
+ps -wA | wc -1: Número de procesos que se están ejecutando a la vez.
+
+ps -wA | grep ttys001: Busca en toda la salida de ps -wA la línea que coincida con el parámetro pasado. Devuelve todos los procesos que contienen el parámetro.
+
+uptime: Devuelce cuánto tiempo lleva prendido la PC.
+
+POWER TOOLS: COMANDOS PODEROSOS DE BÚSQUEDA
+
+gep: Es una de las power tools más potente. Busca una cadena de caracteres, utilizando expresiones regulares, dentro de un árbol de archivos (sea binario o de texto).
+	grep -r . -e [parámero]: Busca recursivamente una expresión dentro de un árbil de archivos.
+	grep -r files -e [parámetro]: Buscar en otro directorio.
+	grep -n files -e [parámetro]: Da un poco más de información.
+	grep [parámetro] -e [parámetro] | wc -l: Indica cuántos elementos son.
+
+	-r: Recursivo.
+	-e: Expresión.
+	-n: Indica cuál es el número de línea dentro del archivo en dónde se va a encontrar el parámetro.
+	. : Dentro del directorio.
+
+find, a diferencia de grep, busca cadenas, pero en los nombres de archivo, pero en la metadata. 
+	find . -name *.php -type .file
+	(que haya un punto en el -name, no cambia nada en el tiempo de ejecución, pero ayuda a discriminar los archivos que se está buscando).
+
+	-name: Nombre del archivo.
+	-type: Tipo de archivo.
+		-type d: Indica un directorio.
+
+date: Fecha actual.
+time: Tiempo del procesador.
+
+POWER TOOLS: CURL, ZIP Y TAR
+
+curl [dirección]: Emula los request de un browser.
+curl [dirección] > [archivo]: Guarda todos los metadatos que se generan en un archivo.
+curl [dirección] -o [nombre de archivo]: Ídem del segundo.
+
+zip [nombre del archivo] [extensión]: Comprimir archivos.
+unzip [nombre del zip]: Descomprime una caperta. Mantiene el archivo original.
+	-vl: Enlista el contenido sin descomprimir.
+
+tar cfz [nombre del archivo].tar.gz: Similar a zip, junta varios archivos en uno solo sin comprimirlos. Después se le dicta un algoritmo de compresión, que es zip..
+	cfz: Create files for zip.
+	xfz: Extract files zip.
+	cfz [archivo.tar.gz]: Junta y comprime.
+	xfz [archivo .tar.gz]: Descomprime.
+
+cat peliuclas.csv 1 awk -F"::" {printf("%s\n", $2more)}
+	awk: Iniciales de cada uno de los que diseñaron el programa.
+	-F: Formato de separar columnas.
+
+	ls -lh *csv*: Trae todos los archivos que contengan CSV en su nombre.
+
+PIPE (|)
+
+|: Permite concatenar comandos.
+Juega con el STDOUT del primer comando, y lo manda al STDIN del segundo comando. 
+Se habla de explorar el STDOUT de un comando. No hay límite para concatenar (el mínimo tiene que ser dos). 
+A diferencia del ";", lo que haría el "|", manda el STDOUT al segundo comando.
+Hay veces que el STOUT del primer comando, va a compartir el STOUT de otro, por lo pueden estar corriendo varios procesos al mismo tiempo.
+Una vez que pasa de "|" a "|", perdimos lo que no pasamos por el STDOUT.
+El STDOUT de un comando, lo va a mandar al STDIN de la ejecución de otro comando.
+
+ls -l: Enlista todo lo que haya en el directorio.
+ls -l | wc -l: Cuántas líneas tiene el STDOUT. 
+	wc: Web Count.
+grep -v [parámetro]: Evita que se imprima el parámetro pasado. 
+sed -e [parámetros]: Busca dentro de strings con expresiones regulares.
+	sed: String editor.
+	-i: Indistito de mayúsculas y minúsculas.
+
+CRONTAB: UNA HERRAMIENTA PARA AUTOMATIZAR TAREAS DESDE LA TERMINAL
+
+Herramienta que viene de los primeros sistemas de UNIX, que permite automatizar la ejecución de diferentes scripts, o comandos muy puntuales.
+El crontab es un programa que está instalado en todo el sistea, y hay algunos a los que no tenemos acceso. Se ejecuta sí y solo sí la PC está encendida.
+
+crontab: Agendar.
+	crontab -l: Lista el crontab que se tiene instalado. Las columnas que aparecen por consola, significan las iteraciones de ejecución.
+	Columna 1: En qué minuto de todas las horas (0-59).
+	Columna 2: En qué hora del todo el día (0-23).
+	Columna 3: El día del mes (1-31).
+	Columna 4: El mes del año (1-12).
+	Columna 5: Día de la semana (0-7. Cero y siete son domingo).
+	Columna 6: Qué es lo que quiero que se ejecute.
+Para separar las columnas, se necesita un tab o serie de espacios.
+Nos permite poner valores y listas.
+Ejemplo:
+	Columna 1 (minuto):
+		1
+		1,10,18 (sin espacios)
+		*/5 (se ejecuta cada cinco minutos)
+		1-10 (se ejecuta durante los primeros diez minutos)
+		* (que se ejecuten todos los valores posibles para la operación).
+		
+	Ejemplo con todas las columnas:
+
+		0 3 * * 1 [script]
+		
+		0: (minuto cero)
+		3: Tres de mañana.
+		*: Todos los días del mes.
+		*: Todos los meses del año.
+		1: Lunes.
+	Las columnas deen estar ordenadas.	
+	
+	crontab -e: Editar.
+	
+
+Editor.
+i (insert): Editar.
+wq! (para salir sin que nos haga ninguna pregunta).
+#: Para comentar.
+
+LINKS
+
+Comandos para poder saber qué es lo que nos está consumiendo espacio en disco.
+
+du (disk usage): Devuelve el espacio que ocupan los archivos dentro de un directorio.
+	du -h: Para facilitar la lectura humana. Algunos lo usan com HELP.
+	du -h -d [entero]: Nivel de profundidad. En otros sistemas operativos, equivale a --max-depth=1.
+
+Recomendaciones para poder ahorrar espacio en disco.
+
+Links simbólicos
+
+En algunos sistemas de operativos se llaman alias.
+Funcionan para archivos y directorios.
+
+ln -s [archivo al que se quiere llegar] [alias]:
+	-s: Simbólico. Cuando se lo elimina, se borra el link y no a lo que está apuntando.
+
+	d: Directorio.
+	l ó @: Link. 
+
+Tener cuidado con los links duros, a que si se los borra, se borra el contenido al que apunta.
+
+USUARIOS Y PERMISOS
+
+whoami: Devuelve el usuario que está conectado.
+Es muy importante saber el grupo al que pertenece el usuario dentro de un sistema operativo, para saber qué permiso tiene.
+chmod [permisos][archivo]: Cambiar permisos.
+which [archivo]: Qué archivo se ejecuta.
+
+Usuario root (usuario Dios). Puede hacer lo que sea en el sistema.
+sudo (Super user do).
+Pide contraseña. Pide la contraseña del usuario, no del root.
+
+Convertir archivos a ejecutable
+#! [ruta del ejecutable]: Vuelve un archivo como ejecutable, estamos especificando quién va a ejecutar el comando que sigue.
+#! necesariamente debe incluirse al inicio del archivo. En la primera línea.
+
+Permisos
+-: Nos dice si es directorio, link o file.
+rw-: Dueño (Owner).
+r--: Grupo al que pertenece (Group).
+r--: Cualquiera (Anyone).
+
+	Combinaciones de permisos:
+		---: No tiene permisos. Vale 0.
+		--x: Sólo ejecución. Vale 1.
+		-w-: Sólo se escritura: Vale 2.
+		-wx: Escritura y ejecución. Vale 3.
+		r--: Sólo lectura. Vale 4.
+		r-x: Lectura y ejecución. Vale 5.
+		rw-: Lectura y escritura. Vale 6.
+		rwx: Todos los permisos. Vale 7.
+	Todos los valores posibles tienen una representación numérica única.
+	
+	r: Read. Valor binario: 4.
+	w: Write. Valor binario: 2.
+       	x: Execute. Puede ejecutar esto. Valor binario: 1.
+	-: Sin permisos. Valor binario: 0.
+
+	Binarios
+
+		000 -> 0
+		001 -> 1
+		010 -> 2
+		011 -> 3
+		100 -> 4
+		101 -> 5
+		110 -> 6
+		111 -> 7
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
