@@ -1,0 +1,44 @@
+Mamenjo de archivos y directorios
+
+ls -> Permite listar los archivos y directorios que estén en la carpeta.
+	Tiene comandos que permiten extender la funcionalidad:
+		ls -a -> Nos muestra todos los archivos, incluso los ocultos.
+		ls -l -> Lista los archivos, mostrando el contenido del directorio con los permisos, propietario, el peso y la fecha de modificación.
+		ls -t -> Organiza por fecha de modificación.
+	Algo interesante, es que se pueden unir comandos:
+		ls -la -> Permite listar, y mostrar los archivos ocultos, junto con los permisos, el peso, el propietario, y la fecha de modificación.
+		ls -lat -> Se le agrega la posibilidad de ordenar por fecha de modificación. 
+		
+clear -> Limpia la pantalla.
+Ctrol + L -> Limpia la pantalla.
+pwd -> Retorna la dirección absoluta en la que estamos ubicados.
+
+Hay dos maneras de ubicarse en la trminar: Con una ruta absoluta, y con una relativa.
+	1) Absoluta: Desde el inicio del sistema de archivos.
+	2) Relativa: En base a dónde estamos ubicados.
+	
+mkdir [nombre] -> Crear una carpeta.
+cd [nombre] -> Entrar a una carpeta.
+	. -> Hace referencia a la carpeta en la que estamos ubicados.
+	.. -> Hace referencia al padre de la carpeta.
+	Para moverse a la carpeta HOME, se pone solamente 
+		1) cd
+		2) cd ~/
+		
+La terminal guarda un histórico de todo lo que se ejecutó.
+	history -> Muestra el listado de comandos ejecutados.
+	Para ejecutar un comando anterior, se hace lo siguiente: ![posición en el histórico]
+	
+touch [nombre] -> Crea un archivo vacío.
+	touch text.txt
+[editor: Nano, VIM, etc] [nombre del archivo] -> Editar.
+	nano text.txt
+mv [nombre][ubicación final] -> Mover archivo a una carpeta. 
+	mv text.txt ciri/text.txt
+rm [nombre] -> Eliminar archivo.
+	rm text.txt
+		rm -rf [nombre] -> Elimina una carpeta.
+			rm -rf ciri
+mv [nombre de la carpeta]/[nombre del archivo] ./(indica que es la carpeta en la que estamos unicados)[nombre del archivo) -> Para mover un achivo a la 
+carpeta raíz.
+	mv ciri/text.txt ./text.txt

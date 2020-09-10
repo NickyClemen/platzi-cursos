@@ -1,0 +1,13 @@
+Herramientas básicas (Comandos CAT, MORE, TAIL y OPEN)
+
+cat [nombre archivo] -> Permite visualizar el archivo completo en la terminal.
+	cat README.txt
+	Podemos usarlo para crear copias de archivos.
+		cat [nombre del archivo a copiar] > [nombre que le queremos dar al archivo]
+			cat README.txt > README_copy.txt
+more [nombre del archivo] -> Permite visualizar el archivo por partes.
+	more README.txt
+tail [nombre del archivo] -> Muestra las últimas diez líneas del archivo. Se puede configurar, pasando una bandera con el número de líneas que se quiere visualizar.
+	tail README.txt
+	tail -15 README.txt
+open -> Permite abrir un archivo con su programa por defecto.

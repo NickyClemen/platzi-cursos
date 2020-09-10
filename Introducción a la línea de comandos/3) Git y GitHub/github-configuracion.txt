@@ -1,0 +1,9 @@
+Github: Configuración, repositorio remoto, push y pull
+1) Una de los prerrequisitos para poder crear una cuenta en GitHub, es tener configuradas las llaves SSH. Permite crear una conexión segura entre GitHub y la 
+computadora. La llave SSH se busca en la carpeta .ssh (se pasa la key pública) en la home de la terminal.
+2) Crear un repositorio. Se recomienda inicializarla con una MIT licence.
+
+Abrir el VSCode desde la terminal -> code .
+
+git push -> Enviar código al repositorio remoto.
+git pull -> Traer los cambios del repositorio remoto, al local.

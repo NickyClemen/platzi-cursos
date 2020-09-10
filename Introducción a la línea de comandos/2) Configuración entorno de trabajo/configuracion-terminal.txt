@@ -1,0 +1,7 @@
+Configuración de la terminal MacOS
+Herramientras principales
+	Hyper: Terminal multiplataforma.
+	https://hyper.is/
+	Oh My ZSH: Permite personalizar la terminal.
+	https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH
+	https://ohmyz.sh/

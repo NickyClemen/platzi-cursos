@@ -1,0 +1,17 @@
+Crear llaves SSH
+
+Llaves SSH -> Herramienta que nos permite la autenticación entre servidores. Son la firma que tenemos, para asegurarse que somos nosotros, y no alguien más
+tratando de hacerse pasar por nosotros.
+En segundo plano, las llaves SSH utilizan:
+	1) Ciptografía asimétrica. Llave pública (puede ser compartida en Internet) y llave privada (se mantiene en un sitio seguro, y no debe ser compartida bajo
+	ningún concepto).
+	2) Llaves SSH. Conerxión fácil y segura a servidores.
+
+Crear llave SSH	
+ssh-keygen
+Acepta parámetros.
+	ssh-keygen -t rsa -b 4096 -C "This is a key"
+	
+	rsa (Rivest, Shamir y Adleman) -> Algoritmo utilizado para la creación de las llaves.
+	-b -> Indica la cantidad de bits que tendrá la llave. 2048 suele ser suficiente.
+	-C -> Comentarios.

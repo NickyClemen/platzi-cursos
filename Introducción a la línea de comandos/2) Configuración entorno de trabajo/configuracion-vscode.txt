@@ -1,0 +1,11 @@
+Instalación y configuración de VSCode
+Extensiones
+	1) Git Blame.
+	2) ESLInt.
+		Instalación global de ESLint
+			npm install -g eslint
+		Ejecutar la configuración
+			npx eslint --init
+	3) Prettier
+	4) Color Highlight
+	5) Sass

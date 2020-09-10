@@ -1,0 +1,30 @@
+Cómo crear un repositorio, primer commit, reset y logs.
+Los repositorios nos permiten guardar un histórico de todos los cambios sobre el proyecto.
+
+Empezar un repositorio.
+	1) Crear una carpera dentro del contenedor deseado (por ejemplo, Documents).
+	2) Crear un archivo README.md. Es importante, porque lo primero que vamosa ver cuando entremos a GitHub, será lo contenido dentro de este archivo.
+	Por lo general, ahí están los pasos de instalación del proyecto.
+	
+git init -> Crear repositorio en Git.
+	master es la rama principal de todo repositorio. Si parece un asterisco, significa que hay cambios listos para guardarse. 
+	Para saber si se creó el repositorio, se constata que se creó una carpeta .git, que es dónde se guarda todo lo necesario para llevarel histórico.
+	
+commit -> Forma en la que guardamos un cambio dentro del repositorio, y se asegura el cambio.
+Todo cambio, tiene varios estados:
+	1) Sin seguimiento (untracked).
+	2) Con cambios.
+	3) Sin cambios.
+	4) En stagging.
+	
+git status -> Es lo que nos va a mostrar como está, en éste momento, nuestro repositorio.
+git add [nombre del archivo] -> Para que sea incluso en la cola del commit.
+Siempre que queramos hacer un cambio, y este se vea reflejado en el commit, hay que hacer git add.
+git commit -> Para hacer un commit.
+	git commit -m "Message" -> Dejar un comentario en el commit.
+git log  -> Para hacer un histórico de commits.
+git checkout -- [nommbre archivo] -> Permite ignorar los cambios que se hicieron sobre un archivo.
+
+Regresar al estado anterior con el comando RESET.
+	1) reset --soft [id del commit] -> Se puede regresar al estado anterior, pero guardando los cambios del nuevo.
+	2) reset --hard [id del commit] -> Se puede regresar al comando anterior, sin mantener los cambios.

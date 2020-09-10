@@ -1,0 +1,13 @@
+Ramas, rebase y merge
+Rama: Duplicación de un objeto sobre el repositorio.
+master es la rama principal del repositorio.
+
+git checkout -b [nombre] -> Crear una rama. Se crea una rama con el mismo contenido que la master.
+git merge [nombre] -> Fusión de ramas.
+
+rebase, funciona distinto. Los commits que se hagan sobre la rama paralela, serán pasados a la rama master. La rama paralela, seguirá existiendo.
+	git rebase [rama de la que se quieran los commit]
+
+git branch -> Muestra las ramas del repositorio.
+git checkout [nombre] -> Cambiar de rama.
+git add . -> Se guardan todos los cambios.

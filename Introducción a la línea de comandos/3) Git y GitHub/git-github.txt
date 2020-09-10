@@ -1,0 +1,11 @@
+¿Qué es Git, para qué se usa y qué resuelve?
+Git es un sistema de control de versiones, que nos permite llevar un histórico sobre los cambios en el proyecto.
+Fue creado por Linus Torvald.
+GitHub es la red social de programadores. Utiliza Git por lo bajo, dentro de su core.
+
+Conceptos de Git.
+	Repositorio: Estrutura de datos que almacena información sobre archivos o directorios.
+A partir de la creación del repositorio, se mantiene un histórico de todos los archivos 
+	Rama: Es la duplicación de un objeto bajo un repositorio. Permite trabajar en paralelo entre varios desarrolladores para no pisarse.
+	
+GitHub: Permite crear pruebas sobre el código. Crear integraciones (por ejemplo, hacer deploy automáticos una vez se haga un merge en la rama master).
