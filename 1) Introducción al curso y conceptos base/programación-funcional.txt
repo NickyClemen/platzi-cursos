@@ -1,0 +1,20 @@
+En programación funcional, se declaran objetos (no se tienen que crear
+métodos dentro de las clases, sino que se crean funcionen propias), y
+luego se modifican con funciones.
+
+Es un paradigma declarativo, por lo que hay que enfocarse en lo que hay que
+hacer, y no en cómo hay que hacerlo.
+
+// Imperativo.
+let array = [1 , 2, 3];
+let arrayDos = [];
+
+for (let i = 0; i < array.length; i++) {
+
+    arrayDos.push(array[i] * 2);
+
+}
+
+// Declarativo.
+let array = [1 , 2, 3];
+let arrayDos = array.map(item => item * 2);
