@@ -13,11 +13,6 @@ Base datos key-value: Identificador único (Cassandra).
 Grafos: Crean relaciones entre nodos. Son útiles para redes sociales, o análisis de datos complejos (Neo4J).
 
 Configurar Mongo Atlas
-uri format: mongodb+srv://DB_USER:DB_PASSWORD@DB_HOST/DB_NAME
-uri: mongodb://db_user:Ciren2020@cluster0-shard-00-00.b965e.mongodb.net:27017,cluster0-shard-00-01.b965e.mongodb.net:27017,cluster0-shard-00-02.b965e.mongodb.net:27017/telegrom.Message?ssl=true&replicaSet=atlas-9n3g8c-shard-0&authSource=admin&retryWrites=true&w=majority
-user: db_user
-password: Ciren2020
-
 1) Crear cuenta en https://www.mongodb.com/cloud/atlas
 Es buena práctica limitar el acceso por IP.
 
