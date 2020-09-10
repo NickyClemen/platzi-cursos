@@ -1,0 +1,10 @@
+/* Git. Sistema de control de versiones. Creado por Linux Foundarion, puntualmente por Linus
+Torvald. 
+    1) git init - Inicia el repositorio. Base en las que se guardan los cambios.
+    2) git add [archivo] - Inicia los archivos. 
+    3) git commit -m "message" - Envía los cambios al stage.
+    4) git add . - Inicia todos los archivos.
+    5) git status -
+    6) git show -
+    7) git log [file-name] - 
+    8) git push - */
