@@ -1,0 +1,24 @@
+{
+  "name": "js-npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "hola": "node",
+    "deploy": "npm run format && npm run build"
+  },
+  "keywords": [],
+  "author": "Nicole Ordoqui <email@email.com>",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "date-fns": "^2.10.0",
+    "webpack": "^4.42.0"
+  },
+  "optionalDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
