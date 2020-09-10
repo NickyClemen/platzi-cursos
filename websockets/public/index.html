@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.io</title>
+</head>
+<body>
+    <header>
+        <h1>Consola.</h1>
+    </header>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io.connect('http://localhost:8080', {
+            forceNew: true, // Se fuerza que las conexiones sean nuevas.
+        });
+
+        socket.on('message', data => {
+            let header = document.querySelector('header');
+            let h3 = document.createElement('h3');
+            let socketMessage = document.createTextNode(data);
+            h3.appendChild(socketMessage);
+
+            header.appendChild(h3);
+        });
+    </script>
+</body>
+</html>
