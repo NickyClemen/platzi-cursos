@@ -6,9 +6,7 @@ Toda función:
 	a) Tiene un tipo de dato de retorno: Resultado de la operación.
 	b) Nombre.
 	c) Lista de argumentos.
-	d) Conjunto de instrucciones.
-	 
-*/
+	d) Conjunto de instrucciones. */
 int func(int a) {
 	return a * 2;
 }

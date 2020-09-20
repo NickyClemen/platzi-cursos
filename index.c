@@ -19,9 +19,9 @@ Lenguajes basados en C:
     2) C#
     3) Java
     4) Javascript
-    5) PHP 
+    5) PHP
     
-Path: C:\Program Files (x86)\CodeBlocks 
+Path: C:\Program Files (x86)\CodeBlocks
 
 Estructura de un programa en C 
 DIRECTIVAS DE PRE-COMPILADOR: Instrucciones que se le van al compilador para determinar el proceso de traducción.
@@ -50,7 +50,7 @@ Tipos de datos
     "Hola" - String - V
     2.5902 - float - V
     Todas éstas expresiones, se conocen como literales (están escritas para entender qué estamos viendo).
-    
+
     boolean: Para C, una expresión que evalúa como 0, es falsa. Y cualquiera que no sea 0, es verdadero.
 
 Operadores: Símbolos que expresan operaciones.
