@@ -14,23 +14,19 @@ const attrsToString = (obj = {}) => {
   return string;
 }
 
-const tagAttrs = obj => (content = '') => `<${ obj.tag }${ obj.attrs ? ' ' : '' }>${ attrsToString(obj.attrs) }>${ content }</${ obj.tag }>`;
-const tag = t => typeof t === 'string' ? tagAttrs({ tag: t }) : tagAttrs(t);
+const tag = t => content => `<${ t }>${ content }</${ t }>`;
 
-const description = document.querySelector('#description');
-const calories = document.querySelector('#calories');
-const carbs = document.querySelector('#carbs');
-const protein = document.querySelector('#protein');
+const description = $('#description');
+const calories = $('#calories');
+const carbs = $('#carbs');
+const protein = $('#protein');
 
 let list = [];
 
-description.keypress(() => {
-  description.classList.remove('is-invalid');
-});
-
-calories.keypress(() => calories.classList.remove('is-invalid'));
-carbs.keypress(() => carbs.classList.remove('is-invalid'));
-protein.keypress(() => protein.classList.remove('is-invalid'));
+description.onkeypress = description.classList.remove('is-invalid');
+calories.onkeypress = calories.classList.remove('is-invalid');
+carbs.onkeypress = carbs.classList.remove('is-invalid');
+protein.onkeypress = protein.classList.remove('is-invalid');
 
 const validateInputs = () => {
   /* if (description.val() === '') {
@@ -42,7 +38,7 @@ const validateInputs = () => {
   carbs.value ? '' : carbs.classList.add('is-invalid');
   protein.value ? '' : protein.classList.add('is-invalid');
 
-  if(description.value && calories.value && carbs.value && protein.value) {
+  if (description.value && calories.value && carbs.value && protein.value) {
     add();
   }
 }
@@ -61,8 +57,8 @@ const add = () => {
 }
 
 const cleanInputs = () => {
-  description.value = '';
-  calories.value = '';
-  carbs.value = '';
-  protein.value = '';
+  description.value;
+  calories.value;
+  carbs.value;
+  protein.value;
 }

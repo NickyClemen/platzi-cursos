@@ -5,21 +5,10 @@ const calories = document.querySelector('#calories');
 const carbs = document.querySelector('#carbs');
 const protein = document.querySelector('#protein');
 
-description.keypress(() => {
-  description.classList.remove('is-invalid');
-});
-
-calories.keypress(() => {
-  calories.classList.remove('is-invalid');
-});
-
-carbs.keypress(() => {
-  carbs.classList.remove('is-invalid');
-});
-
-protein.keypress(() => {
-  protein.classList.remove('is-invalid');
-});
+description.onkeypress = description.classList.remove('is-invalid');
+calories.onkeypress = calories.classList.remove('is-invalid');
+carbs.onkeypress = carbs.classList.remove('is-invalid');
+protein.onkeypress = protein.classList.remove('is-invalid');
 
 const validateInputs = () => {
   /* if (description.val() === '') {
