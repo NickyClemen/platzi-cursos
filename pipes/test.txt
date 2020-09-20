@@ -1,0 +1,4 @@
+Estoy en modo edicion.
+Hola, estoy editando con VSCode.
+
+Ah... Esto es otra cosa.
