@@ -91,7 +91,7 @@ class Utils {
         for(let key in books) {
             if(allowedResourceType === key) {
                 let items = books[key];
-                items.filter((item, index )=> {
+                items.filter((item, index ) => {
                     if(item.idLibro === id) {
                         items.splice(index, 1);
                     }

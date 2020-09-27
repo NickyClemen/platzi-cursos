@@ -69,7 +69,7 @@ router.put('/:allowedResourceType/:id', (req, res, next) => {
             res.status(200).json({ message: 'La entrada ha sido actualizada con éxito.' });
         } else if(typeof result === 'string') {
             res.status(200).json({ message: result });
-        } else{
+        } else {
             res.status(400).send({ message: 'No se han encontrado resultados.' });
         }
     } catch(err) {
@@ -87,7 +87,7 @@ router.delete('/:allowedResourceType/:id', (req, res, next) => {
             res.status(200).json({ message: 'Entrada eliminada con éxito.' });
         } else if(typeof result === 'string') {
             res.status(200).json({ message: result });
-        } else{
+        } else {
             res.status(400).send({ message: 'No se han encontrado resultados.' });
         }
     } catch(err) {
