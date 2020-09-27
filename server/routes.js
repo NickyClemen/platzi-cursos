@@ -38,4 +38,41 @@ router.get('/:allowedResourceType/:id', (req, res, next) => {
     }
 });
 
+router.post('/:allowedResourceType', (req, res, next) => {
+    const { allowedResourceType } = req.params;
+    const { body } = req;
+    const entry = utils.setReqBody(body, allowedResourceType);
+
+    try {
+        const result = utils.setEntry(allowedResourceType, entry);
+
+        if(result) {
+            res.status(201).json({ message: 'Entrada ingresada con éxito.' });
+        } else{
+            res.status(400).send({ message: 'No se pudo incorporar la entrada.' });
+        }
+    } catch(err) {
+        next(err.message);
+    }
+});
+
+router.put('/:allowedResourceType/:id', (req, res, next) => {
+    const { allowedResourceType, id } = req.params;
+    const { body } = req;
+
+    const entry = utils.setReqBody(body, allowedResourceType);
+
+    try {
+        const result = utils.updateKey(allowedResourceType, id, entry);
+
+        if(result) {
+            res.status(200).json({ message: 'La entrada ha sido actualizada con éxito.' });
+        } else{
+            res.status(400).send({ message: 'No se han encontrado resultados.' });
+        }
+    } catch(err) {
+        next(err.message);
+    }
+});
+
 module.exports = router;
