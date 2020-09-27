@@ -65,7 +65,7 @@ class Utils {
 
         for(let key in books) {
             if(allowedResourceType === key) {
-                const items = books[key];
+                let items = books[key];
                 items.filter(item => {
                     if(item.idLibro === id) {
                         item.idLibro = entry.idLibro;
@@ -76,6 +76,31 @@ class Utils {
                 });
 
                 return items;
+            } else {
+                const message = 'No se han encontrado resultados.';
+                return message;
+            }
+        }
+    }
+
+    deleteKey(allowedResourceType, id) {
+        if(!books) {
+            next(new Error('Ha ocurrido un error.'));
+        }
+
+        for(let key in books) {
+            if(allowedResourceType === key) {
+                let items = books[key];
+                items.filter((item, index )=> {
+                    if(item.idLibro === id) {
+                        items.splice(index, 1);
+                    }
+                });
+
+                return items;
+            } else {
+                const message = 'No se han encontrado resultados.';
+                return message;
             }
         }
     }
