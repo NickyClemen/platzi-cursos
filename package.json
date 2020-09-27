@@ -1,0 +1,27 @@
+{
+  "name": "curso-api-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickyClemen/platzi-cursos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickyClemen/platzi-cursos/issues"
+  },
+  "homepage": "https://github.com/NickyClemen/platzi-cursos#readme",
+  "devDependencies": {
+    "axios": "^0.20.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
