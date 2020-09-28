@@ -49,7 +49,7 @@ router.post('/:allowedResourceType', (req, res, next) => {
         if(result) {
             res.status(201).json({ message: 'Entrada ingresada con éxito.' });
         } else{
-            res.status(400).send({ message: 'No se pudo incorporar la entrada.' });
+            res.status(404).send({ message: 'No se pudo incorporar la entrada.' });
         }
     } catch(err) {
         next(err.message);
@@ -68,9 +68,9 @@ router.put('/:allowedResourceType/:id', (req, res, next) => {
         if(typeof result === 'object') {
             res.status(200).json({ message: 'La entrada ha sido actualizada con éxito.' });
         } else if(typeof result === 'string') {
-            res.status(200).json({ message: result });
+            res.status(404).json({ message: result });
         } else {
-            res.status(400).send({ message: 'No se han encontrado resultados.' });
+            res.status(404).send({ message: 'No se han encontrado resultados.' });
         }
     } catch(err) {
         next(err.message);
@@ -86,9 +86,9 @@ router.delete('/:allowedResourceType/:id', (req, res, next) => {
         if(typeof result === 'object') {
             res.status(200).json({ message: 'Entrada eliminada con éxito.' });
         } else if(typeof result === 'string') {
-            res.status(200).json({ message: result });
+            res.status(404).json({ message: result });
         } else {
-            res.status(400).send({ message: 'No se han encontrado resultados.' });
+            res.status(404).send({ message: 'No se han encontrado resultados.' });
         }
     } catch(err) {
         next(err.message);
