@@ -3,6 +3,7 @@ const debug = require('debug')('app:server');
 
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const app = express();
 
 const authApi = require('./routes/auth');
@@ -14,6 +15,7 @@ const notFoundHandler = require('./utils/middleware/notFoundHandler');
 
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 
 authApi(app);
 moviesApi(app);
@@ -81,5 +83,5 @@ Coverage: Identifica dónde se está fallando, y cómo se puede solucionar.
 
 Passport es un middleware de Express, que permite ejecutar distintas estrategias de autenticación.
 
-Las etsrategias de autenticación, nos ayudan a determinar cómo nos vamos a autenticar haciendo uso de éstas estrategias
+Las strategies de autenticación, nos ayudan a determinar cómo nos vamos a autenticar haciendo uso de éstas estrategias
 en las diferentes rutas, y definir los users que se van a usar. */
