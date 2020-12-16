@@ -45,4 +45,5 @@ test.serial('setup', t => {
 });
 
 /* Strub: Muy similar al objeto original (al modelo), pero que la respuesta y los argumentos
-de entrada, estám implementados por una librería. */
+de entrada, estám implementados por una librería.
+Fixtures: Set de datos de pruebas. */
