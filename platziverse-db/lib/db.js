@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
-let sequilize = null;
+
+let sequelize = null;
 
 module.exports = function setupDatabase(config) {
-    if(!sequilize) {
+    if(!sequelize) {
         sequelize = new Sequelize(config);
     }
 
