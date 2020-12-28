@@ -106,8 +106,9 @@ class HashTable {
                 }
             }
         }
+
+        return undefined;
     }
 }
 
 const myHashTable = new HashTable(50);
-myHashTable.set('hola', 'mundo');
