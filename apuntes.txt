@@ -1,0 +1,139 @@
+Los dispositivos existen para resolver problemas de cálculo.
+    2000AC - La primera "computadora" fue el ábaco.
+    1600 - Calculadoras mecánicas (no eléctricas). Introduce cálculos más complejos. Eran más
+    confunsos que el ábaco, pero ayudó a mejorar la precisión.
+    1700 Computadoras humanas - Las primeras computadoras, eran personas que se encargaban de generar cálculos. Esto no escalaba,
+    ya que habían cálculos que tardaban más de lo debido, o acarreaba problemas de precisión altas. Tenían libros de cálculo
+    (precomputation table), que los ayudaba a buscar la respuesta más rápido.
+    1940 - Se empezaron a crear máquinas que permitían "programarlas", es decir, ingresar datos para realizar un cálculo, y la
+    máquina retornaba la respuesta. Las encargadas de hacer en data entry en las máquinas, eran mujeres.
+    1960 - Empezaron a usar tarjetas perforadas para poder almacenar la información obtenida de los cálculos de las máquinas.
+    Al principio, las perforaciones eran hechas de forma manual.
+    1960 - En una búsqueda para optimizar el trabajo, se creó el machine code (en binario).
+    1970 - Al haber dificultad en programar en lenguaje máquina, empezaron a aparecer los primers lenguajes de programación.
+    Surgieron C y C++ como una extensión de lenguajes de programación más primitivos.
+
+Input: Datos de entrada. Información que se le sumininistra al programa para que pueda procesar y entregar un resultado.
+Output: Salida/respuesta.
+La entrada/salida se procesa mediante los períféricos.
+Los tiempos de respuesta son importantes.
+
+Código binario
+    Machine Code: Lenguaje binario (sistema de conteo). El binario incrementa de a dos (128, 64, 32, 16, 8, 4, 2 , 1).
+
+Bits y bytes
+    Bit: Cada dígito es un bit.
+    Byte: Ocho bits.
+    La computadora entiende el sistema binario con los transistores. Los mismos,
+    funcionan con dos valores: True (1 / On) o False (0 / Off).
+
+ASCII
+    Cada caracter tiene un número asignado que lo representa. Cada caracter especial, letra o número,
+    representa 1 byte (8 bits).
+
+UNICODE
+    Código que tiene todos los alfabetos y caracteres especiales.
+    La diferencia con ASCII, es que cada uno de estos caracteres especiales, puede formarse de 1 a 6 bytes.
+
+RGB (Red Green Blue)
+    Cada pixel de una imagen, está representado por otros tres subpixeles que forman el RGB.
+    Cada color viene de tonalidades de 0 a 255.
+    Un pixel pesa 3 bytes.
+
+De dónde vienen Internet
+    Internet son los cables que permiten la conexión. La mayoría son interoceánicos.
+    Infraestructura de internet (Internet backbone).
+    Es una abreviatura de Internetworking, y se crepo en los años 70 para referirse a los cables físicos y
+    las computadoras que se conectan entre sí.
+    ¿De dónde surge?
+        Viene de un proyecto llamado ARPANET (Advanced Research Projects Agency NETwork), proyecto de investigación
+        académico que interconectaba universidades.
+        En primer mensaje que se trató de enviar entre dos computadoras, fue "LOGIN", pero solamente llegó "LO".
+        Cuando empezaron a salir protocolos, se creó Internet.
+
+Protocolos de comunicación
+    1) TCP/IP (Transmission Control Protocol / Internet Protocol): Protocolo de transmisión de información.
+        a) Application - HTTP/FTP
+        b) Transport - TCP, UDP
+        c) Network - IP, ROUTERS
+        d) Data Link - ETHERNET, SWITCHES
+        e) Physical - Cables
+    Forma en la que se genera la información. Cada envío se genera un header, que trae toda la información para poder
+    realizarlo.
+    IP es la forma de nombrar el equipo en la que se envía o recibe información.
+    Sirven mucho para generar ciertas peticiones/conexiones.
+
+    2) ISP (Internet Service Provider). Nacer cuando se decide abrir el protecto ARPANET, dada la complejidad que alcanzó.
+    Intermediario entre la infraestructura de Internet y el usuario final.
+    3) DNS (Domain Name System). Es un alias/máscara para el IP address.
+
+Historia de la web
+    Tim Berners-Lee fue el primer desarrollador web.
+    Escribió las tres tecnologías principales:
+        a) HTML (HyperText Markup Language). El lenguaje de marcado (formato) para al web.
+        b) URL (Uniform Resource Locator). Un tipo de "dirección" que es única y que se utiliza para identificar cada recurso
+        en la web.
+        c) HTTP (Hypertext Transfer Protocol). Permite la recuperación de recursos vinculados de toda la web.
+
+    La W3 es una forma de globalizar la información y poderla linkear (hipervínculos).
+    Todo esto, se creó junto a la empresa NEXT.
+
+    W3C (W3 Consortium)
+        Encargado de gestionar los standards para la web.
+
+    Browsers
+        WWW - Browser de Tim Berners Lee
+        Mosaic - Implementaron gráficos junto al texto.
+        IBM Web Platform
+        Internet Explorer
+        Netscape - Crearon JS.
+        Safari
+        Google Chrome - Ayudó a mejorar la interacción con el usuario.
+
+    HTTP (HyperText Transfer Protocol) - HTTPS (HyperText Transfer Protocol Secure)
+        Reglas de comunicación.
+        El client hace una HTTP Request (petición) al Server y retorna un HTTP Response.
+        Las conexiones funcionan por única vez.
+
+        Métodos
+            GET - Solicita datos.
+            POST - Envía datos.
+            PUT - Crea o reemplaza datos.
+            DELETE - Borra datos específicos.
+
+        En HTTPS, las conexiones son encriptadas.
+
+    Web standards
+        Los standards no se implementan al mismo tiempo.
+        1) HTML: Permite agregar texto.
+        2) CSS: Permite darle estilos a las páginas.
+        3) Javascript: Le da interacciones a las páginas.
+        4) WebAssembly: Nuevo standard lanzado en diciembre de 2019. Es un compilador para producir sitios web.
+
+    La web moderna
+        Multiplataforma
+            Los patrones de diseño actuales para la web, están orientados a mobile firt/mobile only.
+        IoT
+            Dispositivos de uso diario conectados a internet.
+        Machine Learning - AI
+            Uso de datos para toma de decisiones en androides.
+        5G
+            Más datos y velocidad en dispositivos móbiles.
+
+Cómo funciona del browser
+    DOM
+        Critical Rendering Path
+            Todos los pasos que genera con todos los archivos y assets, para poder renderizar el contenido en la pantalla.
+                1) DOM (Document Object Model): Es un árbol que se genera con todas las etiquetas semánticas de HTML (nodos).
+                Esto permite manipularlo con Javascript.
+                2) CSSOM (CSS Object Model): Genera un árbol de estilos ligados a los elementos del DOM.
+                    JS
+                3) Render Tree (DOM + CSSOM): Genera un árbol en los que se fusionan el DOM y el CSSOM.
+                4) Layout: Es la "maqueta" en la que el browser organiza el Render Tree para poder presentarlo.
+                5) Paint: Renderiza los elementos en el browser.
+                6) Javascript
+                    Por buenas prácticas, el código HTML tiene que ir al final del código HTML.
+
+                    Código JS -> Parse it -> Abstract Syntax Tree -> Interpreter -> Bytecode
+                                                                  -> Optimising Compiler -> Machine Code -> Bytecode
+
