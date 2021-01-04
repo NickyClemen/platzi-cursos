@@ -8,8 +8,6 @@ module.exports = function setupAgent(agentModel) {
 
         const existingAgent = await agentModel.findOne(cond);
 
-        console.log(existingAgent);
-
         if(existingAgent) {
             const updated = await agentModel.update(agent, cond);
             return updated ? agentModel.findOne(cond) : existingAgent;
