@@ -1,0 +1,31 @@
+¿Qué es backend?
+    Tomando como base un modelo cliente-servidor.
+    Se suele usar el término 'backend' para referirse a software ejecutado en el servidor.
+    Se puede expandir más allá de la arquitectura cliente-servidor, y convertirse en un sistema
+    distribuido.
+
+¿Qué son los sistemas distribuidos?
+    1) Sistema monolítico
+        Es un sistema conformado por una sola "pieza" en el que se ejecuta todo".
+        Un único servidor que hospeda uno o más sitios con LAMP (Linux Apache MySQL PHP) stack.
+        Se ejecuta en un solo servidor.
+    2) Sistema distribuido
+        Compuesto de múltiples componentes (servidores) que se comunican entre sí usando redes.
+        Aunque sabemos que es un sistema conformado por muchos componentes conectados por medio de
+        redes (pueden estar en múltuples redes), puede manifestarse en diferentes escalas e implementar múltiples
+        patrones de arquitectura.
+
+Elementos en los sistemas distribuidos
+    1) Load Balancers.
+    2) VMs.
+    3) Base de datos (relacionales y no relacionales).
+    4) Queues (SQS).
+    5) Storage (S3).
+    6) Servicios Publisher-Subscriber (SNS): Enviar notificaciones a los subscriptores.
+    7) Pipelines.
+    8) etc.
+
+Cómo se conecta todo en el backend
+    Para poner conectar un backend, generalmente se exponen API (interfaces que permite que distintos servicios puedan
+    comunicarse entre sí). Permiten acceso a cierta funcionalidad hacía otros componentes del sistema distribuido.
+
