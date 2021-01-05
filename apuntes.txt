@@ -63,9 +63,19 @@ Diseño de bajo nivel, planes de prueba e integración continua
     No hace falta que se hacer un diseño de todo el sistema global.
 
 Plan de integración continua
-    No es solamente como se va a estar integrado ese fixture hasta PROD, sino engloba también el roll out (se tiene una
+    No es solamente como se va a estar integrado ese fixture hasta PROD, sino engloba también el rollout (se tiene una
     funcionalidad, y se hace el esquema de feature para que la implementación llegue hasta los clientes de todos los usuarios).
     A medida que el sistema escala, las pipelines se tienen que ir detallando más a fondo.
 
     Pipelines: Pasos a seguir.
+    Rollout: Distribuir de manera escalonada a producción.
+
+    Etapas
+        DEV
+        TEST
+        PROD
+    Lo está en master, no tiene que ser necesariamente lo que va a ver el usuario final.
+    Los ambientes puede estar atado a un stage específico.
+    Se recomienda el uso de tag para hacer el control de las versiones del código en paralelo.
+    PROD puede tener varias etapas. Al distribuirlo por partes, se evitan que se filten bugs a gran escala.
 
