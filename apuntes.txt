@@ -29,3 +29,43 @@ Cómo se conecta todo en el backend
     Para poner conectar un backend, generalmente se exponen API (interfaces que permite que distintos servicios puedan
     comunicarse entre sí). Permiten acceso a cierta funcionalidad hacía otros componentes del sistema distribuido.
 
+¿Qué es un docucmento de diseño?
+    Contiene todos los detalles que se necesitan para construir el programa.
+    Es agnóstico a lenguajes de programación y proovedores de servicio.
+
+    Se puede poner un índice.
+        a) Hay que agregar Definiciones y acrónimos. Dar todo el detalle y definiciones para poder entender el documento.
+        b) Limitaciones y desconocimiento.
+        c) Casos de uso soportados y fuera de alcance.
+        d) Propuesta: Va detallada la arquitectura.
+
+Creación de los casos de uso (design-doc.md)
+    Se recomienda empezar por los casos de uso, ya que son estictamente lo que va a soportar.
+
+    a) Diagramas: Poner diagramas de secuencia, UML, etc.
+    b) Modelo de datos: Poner diseño de entidades, JSONs, tablas, diagramas entidad-relación, etc.
+    c) Limitaciones: Lista de limitaciones conocidas. Puede ser en formato de lista. Tienen que ir en un formato
+    que sea cuantificable.
+    d) Costo: Descripción/Análisis de costos
+
+Revisión del documento de diseño
+    a) ¿Por qué se hace esto?
+    b) Proponer cambios para una segunda iteración.
+    c) Hay que tener en cuenta la infraestructura.
+    d) Tener más de una alternativa.
+
+Elaboración de la arquitectura del sistema
+    Plasmar estos componentes del sistema distribuido en un boceto.
+
+Diseño de bajo nivel, planes de prueba e integración continua
+    Se detalla la forma en la que se implementa el diseño hecho. Se contempla cómo se va a utilizar y las
+    tecnologías en las que se va a desarrollar.
+    No hace falta que se hacer un diseño de todo el sistema global.
+
+Plan de integración continua
+    No es solamente como se va a estar integrado ese fixture hasta PROD, sino engloba también el roll out (se tiene una
+    funcionalidad, y se hace el esquema de feature para que la implementación llegue hasta los clientes de todos los usuarios).
+    A medida que el sistema escala, las pipelines se tienen que ir detallando más a fondo.
+
+    Pipelines: Pasos a seguir.
+
