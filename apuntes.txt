@@ -77,5 +77,9 @@ Plan de integración continua
     Lo está en master, no tiene que ser necesariamente lo que va a ver el usuario final.
     Los ambientes puede estar atado a un stage específico.
     Se recomienda el uso de tag para hacer el control de las versiones del código en paralelo.
-    PROD puede tener varias etapas. Al distribuirlo por partes, se evitan que se filten bugs a gran escala.
+    PROD puede tener varias etapas. Al distribuirlo por partes, se evitan que se filtren bugs a gran escala.
+
+Definiendo el "Code Complete"
+    Concepto que se utiliza para definir que una tarea está completada (completados los casos de uso y pasan los tests).
+    Trade off: Dar algo, a cambio de otra cosa.
 
