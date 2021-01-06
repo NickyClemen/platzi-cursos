@@ -83,3 +83,5 @@ Definiendo el "Code Complete"
     Concepto que se utiliza para definir que una tarea está completada (completados los casos de uso y pasan los tests).
     Trade off: Dar algo, a cambio de otra cosa.
 
+Diseñando una entidad
+    Una entidad, es un objeto que satisface determinadas reglas de negocio.
