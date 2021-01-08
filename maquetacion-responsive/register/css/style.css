@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: 'Muli', sans-serif;
+}
+
+.header {
+    background-color: #21C08B;
+    width: 100%;
+    height: 80px;
+}
+
+.header__img {
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.register { n
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(#21C08B, #AB88FF);
+    padding: 0 30px;
+    min-height: calc(100vh - 200px);
+}
+
+.register__container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ffffff;
+    border-radius: 40px;
+    color: #ffffff;
+    padding: 60px 68px 40px;
+    min-height: 700px;
+    width: 300px;
+}
+
+.register__container--form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__container--form label {
+    font-size: 14px;
+}
+
+.register__container--form-init {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.register__container--form-init a {
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.register__container--form a:hover {
+    text-decoration: underline;
+}
+
+.register__container > div > img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.register__container--register {
+    font-size: 14px;
+}
+
+.register__container--register a {
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.register__container--register a:hover {
+    text-decoration: underline;
+}
+
+.input {
+    background-color: transparent;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 2px solid #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 0px 20px;
+    outline: none;
+    height: 50px;
+}
+
+::placeholder {
+    color: #ffffff;
+    font-family: 'Muli', sans-serif;
+    font-weight: bold;
+}
+
+.button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Muli', sans-serif;
+    border: none;
+    outline: none;
+    height: 50px;
+    letter-spacing: 1px;
+    margin: 10px 0;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    background-color: #AB88FF;
+}
+
+.footer a {
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    padding-left: 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,5 @@
+Anatomía de una declaración CSS: Selectores, propiedades y valores
+
+p (Selector) {
+    color (Propiedad): red (Valor);
+} -> Declaración.

@@ -1,0 +1,4 @@
+¿Qué es un componente?
+    Básicamente, es un elemento muy pequeño, que se puede utilizar a futuro para construir otros componentes
+    más grandes para formar las vistas de la aplicación.
+    Se recomienda tener una carpeta COMPONENTS, con carpetas para cada componente.
