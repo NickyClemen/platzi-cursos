@@ -1,21 +1,35 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import '../assets/styles/components/CarouselItem.scss';
 
-const CarouselItem = () => (
+import playIcon from '../assets/static/icons-play.png';
+import plusIcon from '../assets/static/icons-plus.png';
+
+const CarouselItem = ({ cover, title, year, contentRating, duration }) => (
     <div className="carousel-item">
-        <img className="carousel-item__img" src="https://images.pexels.com/photos/2305765/pexels-photo-2305765.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="IPhone" />
-
-        <div className="carousel-items__details">
+        <img className="carousel-item__img" src={cover} alt={title} />
+        <div className="carousel-item__details">
             <div>
-                <img src="./img/icons-play.png" alt="" />
-                <img src="./img/icons-plus.png" alt="" />
+                <img className="carousel-item__details--img" src={playIcon} alt="Play Icon" />
+                <img className="carousel-item__details--img" src={plusIcon} alt="Plus Icon" />
             </div>
-
-            <p className="carousel-items__details--title">Título descriptivo</p>
-            <p className="carousel-items__details--subtitle">2019 16+ 114 minutos</p>
+            <p className="carousel-item__details--title">{title}</p>
+            <p className="carousel-item__details--subtitle">{`${year} ${contentRating} ${duration}`}</p>
         </div>
     </div>
 );
+
+/* PropTyps ofrece una manera dinámica de verificar las propiedades que se les pasa a los componentes.
+Se puede verificar el tipo de dato. Se pueden pasar por default o requeridos.
+    npm install prop-types */
+CarouselItem.propTypes = {
+    cover: PropTypes.string,
+    title: PropTypes.string,
+    year: PropTypes.number,
+    contentRating: PropTypes.string,
+    duration: PropTypes.number,
+};
 
 export default CarouselItem;

@@ -36,7 +36,18 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader
                     },
                     'css-loader',
-                    'sass-loader'
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.(png|gif|jpg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/[hash].[ext]',
+                        }
+                    }
                 ]
             }
         ],
@@ -69,4 +80,6 @@ el que tenemos), y luego, el filename.
 
 webpack-dev-server: Ayuda a creer un entorno de desarrollo local.
 mini-css-extract-plugin: Extrae el CSS del bundle resultante de la compilación, y crea un archivo
-aparte. */
+aparte.
+
+file-loader: Loader para archivos. */
