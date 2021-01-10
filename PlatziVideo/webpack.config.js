@@ -52,6 +52,9 @@ module.exports = {
             }
         ],
     },
+    devServer: {
+        historyApiFallback: true, // Permite el routeo en la SPA.
+    },
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html',
