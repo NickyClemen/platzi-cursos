@@ -2,9 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom'; // Con react-dom, se empuja todo lo que se hace con React, hacía el navegador.
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 /* react-redux provee de un provider que permite encaptular los componentes por medio de un conect, el cuál va a tener toda
-la información del store transmitida a los componentes. */
+la información del store transmitida a los componentes.
+compose permite conectar Redux con la dev tool. */
 
 import reducer from './reducers';
 
@@ -176,7 +177,9 @@ const initialState = {
     ]
 };
 
-const store = createStore(reducer, initialState); // Recibe dos parámetros: a) reducer y b) estado inicial.
+// Para conectar al Redux DevTools.
+const composeEnhansers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, initialState, composeEnhansers()); // Recibe dos parámetros: a) reducer y b) estado inicial.
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
 /* Se utiliza una función de ReactDOM para pasar el componente.

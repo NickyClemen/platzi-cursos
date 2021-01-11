@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Search from '../components/Search';
 
+import Header from '../components/Header';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
@@ -13,6 +14,7 @@ import '../assets/styles/App.scss';
 const Home = ({ myList, trends, originals }) => {
     return (
         <Fragment>
+            <Header />
             <Search />
 
             {
@@ -20,7 +22,10 @@ const Home = ({ myList, trends, originals }) => {
                 <Categories title="Mi lista">
                     <Carousel>
                         {
-                            myList.map(item => <CarouselItem key={ item.id } { ...item } />)
+                            myList.map(item => <CarouselItem
+                                key={ item.id } { ...item }
+                                isList
+                            />)
                         }
                     </Carousel>
                 </Categories>
@@ -55,4 +60,4 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, null)(Home);
 /* mapStateToProps propiedades que se le pasan al componente. Se traen solamente los elementos que se necesiten.
-dispath elementos que se vana usar por medio de los actions (acciones que se van a ejecutar). */
+mapDispatchToProps elementos que se vana usar por medio de los actions (acciones que se van a ejecutar). */
