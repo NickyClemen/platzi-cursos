@@ -1,0 +1,339 @@
+La seguridad clásica era intranet-only.
+Mobile revolution: Dispositivos conectados a internet.
+    1) Stack de tecnologias
+        a) JSON Web Token (JWT): No hay estado en estado en el servidor de autenticación. Es compatible
+        con RESTful.
+        b) OAuth 2.0 (Open Auth): Standard de autorización.
+        c) OpenId Connect: Basado en OAuth 2.0. Capa de autenticación.
+
+Autenticación: Verificar la identidad del usuario.
+    Passwordless: Autenticación sin contraseña.
+
+Autorización: Permitir a un usuario acceso limitado a nuestros recursos (conceder permisos).
+
+JSON Web Token (JWT)
+    Sirven para transferir claims (permisos-requerimientos) entre dos partes.
+    Se compone por tres cadenas de caracteres separadas por un '.'. No está encriptado, sino codificado.
+        1) Header. Trae el algoritmo para firmar el JSON, y el tipo de token.
+            {
+                "alg": "HS256",
+                "typ": "JWT
+            }
+
+        2) Payload. Cuerpo del token. Se maneja información de la transacción. No puede haber información sensible.
+            {
+                "sub": "1234567890",
+                "name": "John Doe",
+                "iat": 1516239022 // Claims. Hay varios tipos.
+                    a) Registered Claims Names: Hacen parte del standard. No se deben sobreescribir, ya que son los que define
+                    el standard. Tienen que ser lo más cortos posibles (máximo tres letras).
+                        i) iss (Issuer Claim): Quién generó el JWT.
+                        ii) sub (Subject) Claim: Identificación del usuario.
+                        iii) aud (Audience) Claim: Para quién va el token.
+                        iv) exp (Expiration Time) Claim: Tiempo de vida del token.
+                    b) Public Claims: Listas de claims registrados que no pueden ser sobreescritos
+                    (https://www.iana.org/assignments/jwt/jwt.xhtml).
+                    c) Private Claims: Claims custom (definidos por el proyecto).
+            }
+
+        3) Signature: Firma. No se puede verificar. Es una firma que está encriptada con un algoritmo.
+        Se encripta en base64 el header + '.' + payload + '.' + secret -> Secret key que no se debe compartir con nadie. Se recomienda usar un string de 256 bits.
+
+    Codificación/Decodificación: Proceso que puede ser reversible si se conoce el método con el que se codificó. Por ejemplo,
+    base64.
+
+    Algoritmo de encriptación:
+        a) Simétrico: La llave privada es la misma que se usa para firmar, para encriptar y desencriptar.
+        b) Asimétrico: Se usa una llave privada y una pública.
+
+Autenticación tradicional
+    Un usuario se autentica ante una base de datos.
+    Si el usuario existe en base de datos, el servidor crea una sesión (espacio en memoria). Ésta sesión genera un ID para
+    identificar que es la sesión específica de ese usuario. Este ID, el servidor lo almacena en una cookie.
+    Ésta cookie es enviada al cliente, y la almacena. En cada request, se envía la cookie para que el servidor la compare el
+    ID de la sesión (y si existe).
+    Las SPA (Client Side Application) entran en conflicto porque no hacen refresh (no hay una nueva request).
+    Al no hacer hacer refresh, no envía una request para verificar si la sesión está activa.
+    También entra en conflicto con las REST API, ya que deberían ser stateless (el manejo cookie sesión sí tiene estado stateful).
+    Las apps modernas tienen microservicios, es decir, no es un único servidor. Los métodos para remediar es muy costoso.
+    Hacer revisión de permisos significa hacer queries a las bases de datos (ya que las sesiones no almacenan permisos).
+    El uso de sesión no es escalable, dado que al manejar gran volumen de users, se necesita cada vez más memoria, por lo que
+    suele haber un servidor dedicado al manejo de sesión.
+
+    cookie created -> session created
+
+Autenticación con JWT
+    El servidor al verificar al usuario, firma un token (no tiene que ser un JWT).
+    Este token tiene los permisos y la información del usuario. Lo envía al cliente.
+    El cliente lo almacena (local storage, session storage o cookie).
+    Con esto, las SPA no requieren de un backend para verificar si el usuario está autenticado. Lo único
+    que tiene que hacer el backend, es verificar si el token está firmado.
+    Con esto, el backend puede recibir peticiones de múltiples clientes (no tienen que verificar las sesiones. Solamente
+    verifica el token).
+
+    token signed -> token saved
+
+Buenas prácticas con JWT
+    1) No incluir información sensible.
+    2) Mantenerlo liviano. Se sugiere mantener tres caracteres por claim.
+    3) Periodo de vida corto. Lo recomendado son quince minutos.
+    4) Deberían considerarse opaque tokens. No es buena práctica decodiicarlo en cliente.
+
+Server Side vs. Client Side sessions
+    1) Server Side
+        a) La sesión de una manera de preservar un estado. Es una porción de memoria almacenada.
+        b) Se identifica al user con el ID de la sesión (determina el estado).
+        c) Es stateful.
+
+    2) Client Side
+        a) No hay manera de saber si el usuario está autenticado o no porque no hay manejo de sesiones.
+        b) Las SPA están desacopladas del servidor.
+            i) Cuando el usuario hace Login, agregamos un flag para indicar que lo está.
+            ii) Se verifica el estado del token. Si está expirado, se cambia el estado del flag para indicar que
+            el usuario no está logueado. Se suele chequear cuando la ruta cambia.
+            ii) Si expiró, se lo redirige al Login, y se actualiza el estado a logout.
+
+Protegiendo recursos con JWT
+    Se usan dos algoritmos para el firmado de JWT:
+        a) RS256: Firma RSA con SHA-256. Es asimétrico. Usa una llave pública y otra privada.
+        El servidor firma el token con una private key (secret). El consumidor del JWT, consigue una
+        public key que se utiliza para validar la firma (no se puede usar para firmar JWT).
+            JSON Web Key Set (JWKS): La public key que se utiliza para verificar el token, se suele publicar en el
+            servidor de la aplicación sobre /.wellnone/jwjs.json
+                {
+                    "keys": [
+                        {
+                            "alg": "RS256", -> Algoritmo.
+                            "kty": "RSA", -> Tipo de key.
+                            "use": "sig", -> Para qué fue creada la key.
+                            Otras propiedades:
+                            "x5c": ["MIC...gmo="], -> Es la cadena de certificado x509.
+                            "n": "yeNI...djQ",
+                            "e": "AQAB",
+                            "kid": "NjVBR...2Qg", -> Identificador único de la key.
+                            "x5t": ""NjVBR...2Qg"
+                        } Standard RFC 7517 Section 4.
+                    ]
+                }
+
+        b) HS256: Firma HMAC con SHA-256. Es simétrica. La key se comparte para fimar y validar el
+        token.
+
+    JWK es una especificación para representar las llaves criptográicas que se usan en el firmadode token
+    usando RS256.
+    Define dos estructuras de alto nivel:
+        1) JSON Web Key (JWK): Un objeto JSON que representa una llave criptográfica.
+        Las propiedades del objeto representan propiedades de la llave incluyendo su valor.
+        2) JSON Web Key Set (JWKS): Un objeto JSON que representa un conjunto de JWKs.
+        El objeto JSON debe tener una propiedad llamada 'keys' que es la lista de JWKs.
+
+    Verificar un JWT usando JWKS
+        1) Obtener los JWKS del endpoint y filtrar las potenciales keys de firmado.
+        2) Extraer el JWT del header del request de autorización.
+        3) Decodificar el JWT y obtener la propiedad kid del header.
+        4) Encontrar la llave de firmado filtrada de los JWKS usando la propiedad kid.
+        5) Usar la propiedad x5c para construir un certificado que es el que posteriormente se podrá usar para
+        verificar la firma del JWT.
+
+CORS (Cross-Origin Resource Sharing): Mecanismo que agrega headers adicionales para permitir a un User Agent obtener permisos
+para acceder a los recursos de un servidor distinto (dominio) del que pertenece.
+
+¿Qué es OAuth 2.0?
+    Viene de Open Authentication, y es el protocolo de standard de autorización.
+        Roles
+            a) Resource Owner (User): Es la entidad que concede los permisos a los recursos protegidos.
+            Suele ser el usuario final.
+            b) Resource server (Service API): Es el que almacena los recursos protegidos. Generalmente
+            es la API.
+            c) Client (Application): Suele ser la aplicación desde la que intentamos acceder a los recursos
+            protegidos en nombre del Resource Owner.
+            d) Authorization Server (ServiceAPI): Autentica la identidad, y genera los access token, y se los entrega
+            a los clientes.
+
+    Flujo
+        Application (Client) -> 1) Authorization request -> Requiere permisos en nombre del Resource Owner (User)
+        <-- 2) Authorization GrantEl Resource Owner verifica la aplicación, y le entrega unos permisos de autorización.
+
+        Con estos permisos, el Application (Client) -> 3) Authorization Grant -> Pide el access token al Authorization Server (Service API)
+        <- 4) Access Token. Verifica si esos permisos son legítimos, y otorga el access token con todos los permisos necesarios
+        para consumir los recursos del Resource Server.
+
+        Así, en cada petición que haga la Application (Client), incluye el access token -> 5) Acccess Token, para que el
+        Resource Server (Service API) lo verifique, y si es válido, retorna los recursos. <-- 6) Protected Resource.
+
+    Cómo elegir el flujo de OAuth 2.0
+        1) Si el Client es el Resource Owner -> Client Credentials Grant. EL servidor le concede el
+        client id y el client secret al Client por ser de confianza (ser uno mismo).
+            Flujo
+                API o CLI (Client) -> 1) Client Authentication -> Se identifica ante el Authorization Server (Service User).
+                Lo hace enviando el client id y el client secret con una autenticación básica, e inmediatamente, el Authorization Server
+                retorna el <-- 2) Access Token.
+
+                LA API o CLI (Client) (Client) -> 3) Access Token -> Se hacen llamados a la API, y el <-- 4) Protected Resource
+                (Service API) retorna los recursos.
+
+        2) Si el Client es una WebApp que se está ejecutando del lado del Server -> Authorization Code Grant. En vez de otorgar
+        un access token directamente, se otorga un código que luego es intercambiado por un access token. Es uno de los flujos
+        más seguros y recomendados de usar.
+            Flujo
+                Application (Client) -> 1) Client Identifier -> Se identifica ante el Resource Owner (User). Generalmente, se hace
+                mediante un redirect en el que la aplicación solicita permisos. El Response Type es de tipo "code".
+                <-- 2) Authorization Code: El Resource Owner verifica la aplicación, y le entrega un código de autorización,
+                que luego se intercambia por un access token.
+
+                El Application (Client) -> 3) Client Authentication y Authorization Code -> Almacena el authorization code,
+                y se autentica contra el Authorization Server (Service API). Se envía el client id y el client secret codificados
+                en base64.
+                <- 4) Access Token. Verifica si el client existe, y si el authorization code es válido, y otorga el access token
+                con todos los permisos necesarios para consumir los recursos del Resource Server.
+
+                Así, en cada petición que haga la Application (Client), incluye el access token -> 5) Acccess Token, para que el
+                Resource Server (Service API) lo verifique, y si es válido, retorna los recursos. <-- 6) Protected Resource.
+
+
+        3) Si al Client se le puede confiar las User Credentials -> Resource Owner Password Credentials Grant. Se utiliza en
+        aplicaciones legacy que no pueden hacer refresh, y utilizar mecanismos para verificar y enviar access token.
+        Se utilizan en apps altamente confiables, ya que en este flujo, se le preguta al usuaro final sus credenciales en un
+        formulario antes de de enviarlo al Authorization Server.
+            1) Se le puede confiar absolutamente a la aplicación las credenciales del usuario.
+            Para aplicaciones del lado del cliente o aplicaciones mobile se recomienda usar otros flujos.
+            2) Un flujo basado en redireccionamiento no es posible debido a que es una apliación legada.
+            Si el redireccionamiento es posible se recomienda usar mejor Authorization Code Grant.
+
+                Flujo
+                    1) El usuario final ingresa sus credenciales en la aplicación (cliente) mediante un formulario.
+                    2) La aplicación envía las credenciales al Authorization Server.
+                    3) El Authorization Server valida las credenciales y devuelve un Access Token.
+                    4) La aplicacion ahora puede usar el Access Token para llamar la API en nombre del usuario.
+
+        4) Si el Client es Native App o una SPA
+            SPA -> Implicit Grant. Flujo en el que el Authorization Server envía el access token directamente al client. Hay
+            que tener cuidado, porque es muy delicado que el client tenga el access token.
+                Flujo
+                    SPA Application (Client) -> 1) Client Identifier -> Se identifica ante el Resource Owner (User), y le concede los
+                    permisos, el Authorization Server (Service API) envía el <-- 2) Access Token (fragment) en el framento de la URL (la SPA
+                    va a tener el access token inmediatamente). Es muy importante dónde se va a almacenar.
+                    -> 3) Access Token-> Se incluye en todos los request, y se puede acceder a los
+                    recursos del servidor <-- 4) Protected Resource.
+
+            Native App -> Authorization Code Grant (PKCE - Proof Key For Code Exchange). El Authorization Code Grant tiene
+            algunos problemas de seguridad cuando se implementa en aplicaciones nativas. Por ejemplo, un atacante podría
+            interceptar el authorization_code para obtener un access token.
+            Este flujo se utiliza para mitigar la intercepción del authorization_code retornado por el Authorization Server.
+            Con PKCE, por cada petición, se crea una llave criptográfica aleatoria llamada code_verifier, y su valor transformado
+            es llamado code_challenge, el cuál es enviado al Authorization Server para obtener un authorization_code, que luego
+            es enviado junto el code_verifier para obtener un access token.
+
+                Flujo
+                    1) La aplicación nativa inicia el flujo y redirecciona al usuario al Authorization Server enviando los
+                    parámetros code_challenge y code_challenge_method.
+                    2) El Authorization Server redirecciona el usuario a la aplicación nativa con un authorization_code en el
+                    query string.
+                    3) La aplicación nativa envía el authorization_code y el code_verifier en la url de redireccionamiento
+                    (redirect_uri) junto al client_id al Authorization Server.
+                    4) El Authorization Server valida la información, y retorna una access token.
+                    5) La aplicación nativa ya puede acceder a los recursos del usuario.
+
+Web App (Spotify)
+    Generalmente, los client tienen un CLient ID y un Client Secret (se puede implementar
+    Client Credentials Grant).
+        Se hace una petición de tipo POST, con el header Authorization: Basic.
+        El client id es el user, y el client secret es el password.
+        En el body (tipo x-www-form-urlencoded), se envía:
+            {
+                "grant_type": "client_credentials"
+            } -> Especifica al endpoint que el flujo es de tipo client credential.
+
+Se recomienda tener client por aplicación, y por ambiente.
+URL redirect: Cuando el usuario autoriza la request de autorización, debe redireccionar con un código
+o access token.
+
+OpenID Connect
+    Capa de autenticación basada en OAuth. Genera un standard para usar OAuth.
+    Implementa Authorization Code Grant e Implicit Grant.
+    El access token debe ser usado solamente para hacer llamados a la API. Además, OpenID Connect
+    entrega un nuevo JWT que se llama ID TOKEN. Sirve pra verificar que el usuario está autenticado, y
+    permite tener información básica del user.
+    Tiene sus propios claims, y define nuevos scopes. Por default, el scope que se tienen que agregar,
+    es el de OpenID.
+    También dicta como se debe hacer el manejo de sesión.
+
+    Flujo
+        Se llama al endpoint authorize, se define el scope para obtener los claims, y el endpoint
+        retorna un JWT y un id token. Se verifica en el client si el id token es válido.
+        Se tiene que implementar otro endpoint llamado user_info: Entrega un access token, e información
+        más completa del usuario.
+
+Preocupaciones con JWT
+    1) Dónde almacenarlos
+        No es buena práctica almacenar en local storage.
+        Si se almacenan en el local storage, son vulnerables a ataques XSS (Cross Site Scripting).
+        Deberían tratarse como dato sensible (no deberían estar almacenados en ninguna parte).
+        Si hay un backend, se recomienda usar Authorization Code Grant (lo ideal es que el JWT
+        esté memoria en el servidor o en una sesión).
+        Se puede almacenar en cookies con los flags 'http-only=true' (es accedida solamente en el
+        servidor). También se recomienda que sea 'secure=true' (se pueda ejecutar solamente en https).
+        Las ventajas de las cookies, es que se pueden destruir al cerrar el navegador. Se pueden persistir,
+        pero hay que ponerle un tiempo de expiración. La desventaja, es que el almacenamiento de una cookie es de 4kB.
+        Pueden ser vulnerables a XSS. Se puede solucionar con el flag 'same-site=strict', dónde se verifica que desde dónde
+        se intenta acceder a la cookie, sea el mismo dominio. Es difícil de implementar cuando se requiere acceso a diferentes
+        dominios.
+
+    2) Ataques XSS y CSRF
+        1) CSRF (Cross Site Request Forgery): Desde otro dominio, se carga una imagen en el sitio, dónde guarda la misma
+        transacción abierta por el user (cambia el parámetro de la cuenta). Por eso es importante es mantener un estado para poder
+        verificarlo.
+        2) XSS (Cross Site Scripting): Tiene variaciones que persisten, y otras que no. Se inyecta código HTML/JS en formularios
+        para poder interpretarlos.
+
+    3) Alternativas en JWT
+        Nuevas maneras de cifrar los JWT.
+            a) JWS (JSON Web Signature)
+            b) JWE (JSON Web Encryption)
+            c) JOSE (Javascript Object Signing and Encryption)
+
+        En borrador: PASETO (Platform-Agnostic Security Tokens)
+
+Preocupaciones con OAuth 2.0
+    1) No es un protocolo en sí.
+        Cuando nos referimos a un protocolo hablamos de que su implementación es lo suficientemente estricta
+        para que no existan variaciones y/o confusiones a la hora de la implementación.
+        Debido a la gran adoptación temprana que tuvo OAuth, muchas compañías empezaron a contribuir y agregar sus propias
+        versiones de la implementación. Por eso, es que en la definición no es altamente estricta y se habla de muchas
+        variantes en su implementación convirtiendo OAuth en un framework para crear protocolos en vez de un protocolo en sí.
+        El problema con esto es que deja muy al aire y a la opinión de cada uno cual es la mejor forma de implementar
+        OAuth de manera segura y correcta.
+        La recomendación es no solo leer la especificación si no ademas leer sobre otras implementaciones y
+        los consejos de otras compañías para asegurar una buena implementacion de la misma.
+
+    2) Bearer Tokens
+        Un Bearer token es un token con la característica de que cualquier entidad con la posesión del token puede usarlo
+        a su gusto y no se requiere prueba de su posesión para este uso.
+        El problema con esto es que el token en si tiene todas las autorizaciones que han sido diseñadas para el cliente
+        quien lo concedió, pero eso no implica que otro cliente pueda tomar ese token y usarlo.
+        Idealmente no solo enviar el token si no una prueba de la posesión del mismo pero la realidad es que esto nunca se
+        incluyo en la especificación por lo que las recomendaciones son siempre hacer el uso y envío de tokens en conexiones
+        seguras SSL y tener mucho cuidado con el almacenamiento de los mismos.
+
+Qué es Auth0
+    Provee autenticación/autorización como un servicio. También se puede instalar de manera local.
+    Lo único que hay que elegir, es el proveedor (Google, Facebook, Auth0, DDBB propia).
+    Tiene mucha documentación del stack de autenticación y autorización.
+
+Auth0 Lock y auth0.js
+    Son utils que facilita Auth0 para crear su implementación:
+        a) Auth0 Lock: Interfaz gráfica personalizada, dónde se puede implementar el login y el sign up.
+        Se recomienda para aplicaciones sencillas.
+        b) auth0.js: Ayuda para aumentar la capacidad de administración de Auth0 Lock.
+
+Universal Login
+    Es Auth0 Lock hosteado en un dominio de Auth0.
+
+    Ventajas
+        1) Implementar 'single sign-on' (autenticarse una vez, y usarla en múltiples cuentas).
+        2) Nivel de seguridad.
+        3) Usar dominios personalizados.
+
+    En la creación de una API en Auth0, el identificador es importante para validar y generar los tokens. Suele ser
+    el nombre del dominio.
+

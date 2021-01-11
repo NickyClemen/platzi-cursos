@@ -1,0 +1,9 @@
+api/node_modules
+api/package-lock.json
+
+blog/node_modules
+blog/package-lock.json
+
+admin/node_modules
+admin/package-lock.json
+admin/.next
