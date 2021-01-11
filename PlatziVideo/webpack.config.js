@@ -1,12 +1,16 @@
 // Módulo nativo en Node.
 const path = require('path');
+
+const webpack = require('webpack');
+
 // Instanciar el plugin de HTML.
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // Instanciar el plugin de CSS.
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: ['./src/frontend/index.js', 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload'],
+    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
@@ -57,6 +61,7 @@ module.exports = {
         historyApiFallback: true, // Permite el routeo en la SPA.
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(), // Ayuda en el refresh en caliente de la app.
         new HtmlWebpackPlugin({
             template: './public/index.html',
             filename: './index.html',
