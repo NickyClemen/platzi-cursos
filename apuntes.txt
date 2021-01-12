@@ -5,3 +5,7 @@ Patrón Backend for Frontend
         1) Se usan diferentes lenguajes para desarrollar interfaces.
         2) Optimizás el backend segpun requerimientos de las interfaces.
         3) Tu equipo realiza cambios en el backend con frecuencia.
+
+Redux Thunk (middleware): Permite usar los actions de Redux para hacer peticiones a la API.
+Los actions son objetos planos que se mandan para el flujo de nuestra información. Lo que hacerRedux Thunk,
+es identificar si alguno de estos actions tiene una función, ejecutarla, y luego retornar el elemento.
