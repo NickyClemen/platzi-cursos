@@ -4,9 +4,9 @@ import React, { Fragment } from 'react';
 Se puede utilizar también <>element</>. */
 
 const NotFound = () => (
-    <Fragment>
-        <h1>Página no encontrada</h1>
-    </Fragment>
+  <Fragment>
+    <h1>Página no encontrada</h1>
+  </Fragment>
 );
 
 export default NotFound;

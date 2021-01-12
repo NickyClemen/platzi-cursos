@@ -1,192 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom'; // Con react-dom, se empuja todo lo que se hace con React, hacía el navegador.
 
+import { Router } from 'react-router';
+
 import { Provider } from 'react-redux';
 import { createStore, compose } from 'redux';
 /* react-redux provee de un provider que permite encaptular los componentes por medio de un conect, el cuál va a tener toda
 la información del store transmitida a los componentes.
 compose permite conectar Redux con la dev tool. */
 
+import { createBrowserHistory } from 'history';
+// Se define como se va a crear el historial del browser.
+
 import reducer from './reducers';
 
 import App from './routes/App';
 
-const initialState = {
-    "user": {},
-    "playing": {},
-    "myList": [],
-    "trends": [
-        {
-            "id": 2,
-            "slug": "tvshow-2",
-            "title": "In the Dark",
-            "type": "Scripted",
-            "language": "English",
-            "year": 2009,
-            "contentRating": "16+",
-            "duration": 164,
-            "cover": "http://dummyimage.com/800x600.png/99118E/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 3,
-            "slug": "tvshow-3",
-            "title": "Instinct",
-            "type": "Adventure",
-            "language": "English",
-            "year": 2002,
-            "contentRating": "16+",
-            "duration": 137,
-            "cover": "http://dummyimage.com/800x600.png/302140/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 4,
-            "slug": "tvshow-4",
-            "title": "Grand Hotel",
-            "type": "Comedy",
-            "language": "English",
-            "year": 2014,
-            "contentRating": "16+",
-            "duration": 163,
-            "cover": "http://dummyimage.com/800x600.png/5472FF/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 5,
-            "slug": "tvshow-5",
-            "title": "Stargate Atlantis",
-            "type": "Scripted",
-            "language": "English",
-            "year": 2014,
-            "contentRating": "16+",
-            "duration": 194,
-            "cover": "http://dummyimage.com/800x600.png/B36F20/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 6,
-            "slug": "tvshow-6",
-            "title": "Final Space",
-            "type": "Scripted",
-            "language": "English",
-            "year": 2017,
-            "contentRating": "16+",
-            "duration": 124,
-            "cover": "http://dummyimage.com/800x600.png/CCC539/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 7,
-            "slug": "tvshow-7",
-            "title": "The InBetween",
-            "type": "Drama",
-            "language": "English",
-            "year": 2011,
-            "contentRating": "16+",
-            "duration": 179,
-            "cover": "http://dummyimage.com/800x600.png/FF7A90/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        }
-    ],
-    "originals": [
-        {
-            "id": 8,
-            "slug": "tvshow-8",
-            "title": "Stargate Atlantis",
-            "type": "Action",
-            "language": "English",
-            "year": 2012,
-            "contentRating": "16+",
-            "duration": 148,
-            "cover": "http://dummyimage.com/800x600.png/306880/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 9,
-            "slug": "tvshow-9",
-            "title": "Alien Highway",
-            "type": "Action",
-            "language": "English",
-            "year": 2019,
-            "contentRating": "16+",
-            "duration": 128,
-            "cover": "http://dummyimage.com/800x600.png/604180/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 10,
-            "slug": "tvshow-10",
-            "title": "Elementary",
-            "type": "Animation",
-            "language": "English",
-            "year": 2011,
-            "contentRating": "16+",
-            "duration": 346,
-            "cover": "http://dummyimage.com/800x600.png/FF91BA/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 11,
-            "slug": "tvshow-11",
-            "title": "Strange Angel",
-            "type": "War",
-            "language": "English",
-            "year": 2015,
-            "contentRating": "16+",
-            "duration": 226,
-            "cover": "http://dummyimage.com/800x600.png/45807C/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 12,
-            "slug": "tvshow-12",
-            "title": "Private Eyes",
-            "type": "Comedy",
-            "language": "English",
-            "year": 2018,
-            "contentRating": "16+",
-            "duration": 190,
-            "cover": "http://dummyimage.com/800x600.png/577380/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        },
-        {
-            "id": 13,
-            "slug": "tvshow-13",
-            "title": "NCIS: Los Angeles",
-            "type": "Drama",
-            "language": "English",
-            "year": 2010,
-            "contentRating": "16+",
-            "duration": 160,
-            "cover": "http://dummyimage.com/800x600.png/5472FF/ffffff",
-            "description": "Vestibulum ac est lacinia nisi venenatis tristique",
-            "source": "https://mdstrm.com/video/58333e214ad055d208427db5.mp4"
-        }
-    ]
-};
+const history = createBrowserHistory();
+const preloadState = window.__PRELOADED_STATE__;
 
 // Para conectar al Redux DevTools.
 const composeEnhansers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, initialState, composeEnhansers()); // Recibe dos parámetros: a) reducer y b) estado inicial.
+const store = createStore(reducer, preloadState, composeEnhansers()); // Recibe dos parámetros: a) reducer y b) estado inicial.
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('app'));
-/* Se utiliza una función de ReactDOM para pasar el componente.
-El método render(), recibe dos parámetros: El componente, y dónde se va a empujar el componente.
+delete window.__PRELOADED_STATE__;
 
-json-server se usa para simular una API con un archivo JSON.
-Los hooks le dan estado a los componentes de tipo función (stateless).
-Una de las motivaciones, era los problemas de entendimiento que traía el uso de clases.
-Otro, por lo complicado de enviar props entre componentes.
-Está disponible desde la versión 16.8. */
+ReactDOM.hydrate(
+  <Provider store={store}>
+    <Router history={history}>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById('app'),
+); /* Cuando se hace un hydrate, carga todos los eventos para ser ejecutados del lado del servidor. */
