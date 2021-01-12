@@ -1,0 +1,7 @@
+Patrón Backend for Frontend
+    Es un patrón arquitectónico para crear backends separados para frontends específicos o múltiples
+    interfaces, tanto móviles como web.
+    Se puede aplicar este patrón si:
+        1) Se usan diferentes lenguajes para desarrollar interfaces.
+        2) Optimizás el backend segpun requerimientos de las interfaces.
+        3) Tu equipo realiza cambios en el backend con frecuencia.
