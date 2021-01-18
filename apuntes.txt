@@ -1,0 +1,28 @@
+Web Developer Fundamentals
+    Frontend
+        Desarrollo del lado del client.
+            1) HTML
+            2) CSS
+                a) Frameworks
+                b) Preprocesadores
+            3) Javascript
+                a) Frameworks
+                b) Librerías
+                c) Compilador (Babel)
+                d) Empaquetador (Webpack)
+
+    Backend
+        Desarrollo del lado del server. No tiene un standard definido.
+            1) Server
+            2) Intraestructura
+            3) Base de datos
+
+    Páginas dinámicas
+        Se las conoce también como webapps.
+        Sí están conectadas a una base de datos (se puede generar interacción, por lo que se genera estado).
+
+
+    Páginas estáticas
+        Todos los productos que tengan recursos para consumir, pero son inmutables (no se le hacen cambios).
+        Se las conocen como páginas informaticas (landing pages).
+        No están conectadas a un servidor o una base de datos.
