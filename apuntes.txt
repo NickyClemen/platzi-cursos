@@ -7,5 +7,13 @@ Patrón Backend for Frontend
         3) Tu equipo realiza cambios en el backend con frecuencia.
 
 Redux Thunk (middleware): Permite usar los actions de Redux para hacer peticiones a la API.
-Los actions son objetos planos que se mandan para el flujo de nuestra información. Lo que hacerRedux Thunk,
+Los actions son objetos planos que se mandan para el flujo de nuestra información. Lo que hacer Redux Thunk,
 es identificar si alguno de estos actions tiene una función, ejecutarla, y luego retornar el elemento.
+
+Pruebas unitarias
+    npm install jest enzyme enzyme-adapter-react-16
+        jest sirve para pruebas unitarias.
+        enzyme es una librería creada por Airbnb, perimte trabajar con elementos que se quieran montar.
+
+Snapshot garantiza que la UI cambia bruscamente.
+    npm install -D react-test-renderer
