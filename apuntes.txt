@@ -61,3 +61,25 @@ Optimizar imágenes
     En promedio, una imagen no tiene que pesar más de 70kb.
         -Tiny PNG: Redimensiona la imagen.
         -Verexif: Elimina los metadatos de la imagen.
+
+CSS
+    Cascading es el nombre del algoritmo que usa el borwser para aplicar los estilos.
+
+Pseudoclases (:class): Define el estilo de un estado especial de un elemento.
+Pseudoelementos (::element): Define el estilo de una parte específica de un elemento.
+
+Regla de CSS.
+    selector: Qué elemento se quiere modificar.
+        { propiedad: valor de la propiedad }: Declaración de estilo.
+
+Modelo de caja
+    a) margin: Espacio externo.
+    b) border: Define el espacio del elemento.
+    c) padding: Espacio interno. Ayuda para posicionar un poco el contenido.
+    d) content: Tiene un width (ancho) y un height (alto).
+
+    Dependiendo del position:
+        a) top: Arriba.
+        b) right: Derecha.
+        c) left: Izquierda.
+        d) bottom: Abajo.
