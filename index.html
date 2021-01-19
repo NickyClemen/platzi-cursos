@@ -1,14 +1,61 @@
-<!-- Index es la página inicial al momento de abrir un proyecto. -->
+<!-- Index es la página inicial al momento de abrir un proyecto (es la que busca por default el servidor, salvo que se le
+    indique otra cosa). -->
 <!DOCTYPE html> <!-- Indica la versión del HTML. -->
     <html lang="es"> <!-- lang indica el lenguaje en el que está la página. -->
-        <head>
+        <head> <!-- Le da información necesaria al browser para cargar el proyecto. -->
             <!-- Todo lo que no es visual para el user final. Exclusivo del browser. -->
-            <meta charset="UTF-8"> <!-- Le da información necesaria al browser para cargar el proyecto.
-            charset: Le indica al browser como interpretar caracteres especiales. -->
+            <meta charset="UTF-8">
+            <!-- charset: Le indica al browser como interpretar caracteres especiales. -->
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
+            <!-- name="viewport": Se utiliza para manejar el responsive. -->
+            <meta name="description" content="Ésta página te mostrará fotos de gatos.">
+            <!-- name="description": Es parte del SEO (posicionamiento en buscadores). Describe el contenido de la página. -->
+            <meta name="robots" content="index,follow">
+            <!-- name="robots": Ayuda para los robots de posicionamiento de los navegadores (les da permisos).
+            Se le pone 'unfollow' si no se quiere permitir que lo siga. -->
+
+            <link rel="stylesheet" href=""> <!-- Se utiliza para cargar archivos CSS.
+            rel: Se le indica que va a cargar archivos de tipo CSS.
+            href: Referencia desde dónde se carga el CSS. -->
+
+            <title>Título de la pestaña</title>
         </head>
         <body>
-            <!-- Todo con lo que va a interactuar el usuario final. -->
+            <!-- Todo con lo que va a interactuar el usuario final.
+            Hay dos tipos de etiqueta:
+                a) De contenido.
+                b) Contenedoras: Llevan etiquetas adentro, y nos permiten generar la anatomía de un proyecto. -->
+
+            <!-- Etiquetas contenedoras. Ayuda a generar la maquetación (layout) en el que va a existir el contenido.
+            Esta estructura se llama estructura semántica. Utilizar div es mala práctica. -->
+            <header>
+                <nav></nav> <!-- Barra de navegación. -->
+            </header> <!-- Encabezado de la página. -->
+
+            <main>
+                <section>
+                    <article></article> <!-- se pueden utilizar dentro de los sections. -->
+
+                    <ul>
+                        <li></li> <!-- Item de la lista. -->
+                    </ul> <!-- Lista desordenada. -->
+
+                    <ol></ol> <!-- Lista ordenada. Todos los items van a estar numerados. -->
+                </section> <!-- Secciones dentro del email. -->
+            </main> <!-- Contenido principal. -->
+
+            <footer></footer> <!-- Pie de página. -->
+
+            <!-- Etiquetas de contenido -->
+
+            <!-- Etiquetas de texto. -->
+            <p></p> <!-- Párrafos. -->
+            <h1></h1> <!-- Encabezados. Hay distintas jerarquías de encabezados. -->
+            <a href=""></a> <!-- Genera hipervínculos. Se le pone "#" para evitar que reinicie la página. -->
+
+            <!-- elemento: Es la etiqueta y todo el contenido.
+            contenido: Lo que se encuentra envuelto en la etiqueta HTML.
+            atributo: Lo que está dentro de la etiqueta. Hay vacíos (tiene solamente el nombre del atributo) o
+            compuestos (el nombre y el valor del atributo).-->
         </body>
     </html>
