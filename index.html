@@ -57,5 +57,21 @@
             contenido: Lo que se encuentra envuelto en la etiqueta HTML.
             atributo: Lo que está dentro de la etiqueta. Hay vacíos (tiene solamente el nombre del atributo) o
             compuestos (el nombre y el valor del atributo).-->
+
+            <!-- Etiquetas de contenido multimedia. -->
+            <figure>
+                <img src="" alt=""> <!-- Ayuda a renderizar las imágenes.
+                    src: Link al recurso.
+                    alt: Texto descriptivo de la imagen.-->
+                <figcaption></figcaption> <!-- Sirve para dejar una descripción de la imagen. Similar a alt. -->
+            </figure> <!-- Sirve de contenedor para la imagen. -->
+
+            <video controls preload="auto">
+                <source src="[url]#t=10,60"> <!-- Indica diferentes fuentes al video. -->
+            </video>
+            <!-- Etiqueta para renderizar videos.
+            controls: Aparecen los controles para manipular el video.
+            preload: Ayuda a que el video se empiece a renderizar a la par de la página.
+            src="url#t=10,60": Indica a qué minuto comenzar el video, y el segundo en el que termina. -->
         </body>
     </html>

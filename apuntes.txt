@@ -39,3 +39,25 @@ HTML (Hypertext Markup Language)
             Sidebar
                 Aside
             Footer
+
+Tipos de imágenes
+    Depende del formato para determinar el tipo de imagen.
+        1) Lossy (con pérdida): Son formatos de imagen con pérdida, se aproximan a su imagen original. Por ejemplo,
+        una imagen con pérdida podría reducir la cantidad de colores en su imagen o analizarla en busca de datos innecesarios.
+        Esto reducirá el tamaño del archivo, aunque puede reducir la calidad. Mejora el tiempo de carga. Son ideales para usar en
+        línea, dónde el tamaño del archivo y la velocidad de descarga son vitales.
+            1) JPG/JPEG (Photographic Experts Group): Este formato se utiliza para fotografía. Maneja una gama de colores ilimitada.
+        2) Lossless (sin pérdidas): Capturan todos los datos de su archivo original (no se pierde nada del archivo
+        original. No suelen perder calidad. Son pesadas). El archivo puede estar comprimido, pero todos los formatos sin perdida podrán reconstruir su imagem
+        a su estado original.
+            1) GIF (Graphics Interchange Format): Ocupa una gama de 256 colores y no se pueden hacer más ligeras.
+            2) PNG 8 (Portable Network Graphics): Formato de imagen que tiene un uso de colores de 256. Casi siempre se ocupan
+            para imágenes o logotipos que puedan usar una transparencia. Se se comprime, no pierde calidad.
+            3) PNG 24: Tiene un uso de colores ilimitado.
+            4) SVG (Scalable Vector Graphics): Se lo conoce como formato "vector". Formato ligero que se utiliza para logotipos
+            o imágenes hechas para escalar. Se recomienda para trabajar en distintas resoluciones.
+
+Optimizar imágenes
+    En promedio, una imagen no tiene que pesar más de 70kb.
+        -Tiny PNG: Redimensiona la imagen.
+        -Verexif: Elimina los metadatos de la imagen.
