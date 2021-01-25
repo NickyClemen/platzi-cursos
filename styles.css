@@ -1,1 +1,32 @@
-/*  */
+:root {
+    --variable_name: #00ff; /* Declaración de variables. */
+} /* Container de las variables. Hace referencia a la etiqueta HTML */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+/* Adjacent Sibling */
+h2 + p {
+    color: #ff0000;
+} /* Agrega estilos a las etiquetas p cercanas a un h2. */
+
+/* General Sibling */
+h2 ~ p {
+    color: #00ff;
+} /* Aplica estilos siempre que estén en el mismo nivel. */
+
+/* Child y Descendant */
+div > p {
+    color: #00ff00;
+}
+
+article p {
+    color : var(--variable_name); /* Llamar una variable. */
+}

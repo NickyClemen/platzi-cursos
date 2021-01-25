@@ -14,7 +14,7 @@
             <!-- name="robots": Ayuda para los robots de posicionamiento de los navegadores (les da permisos).
             Se le pone 'unfollow' si no se quiere permitir que lo siga. -->
 
-            <link rel="stylesheet" href=""> <!-- Se utiliza para cargar archivos CSS.
+            <link rel="stylesheet" href="./styles.css"> <!-- Se utiliza para cargar archivos CSS.
             rel: Se le indica que va a cargar archivos de tipo CSS.
             href: Referencia desde dónde se carga el CSS. -->
 
@@ -28,20 +28,56 @@
 
             <!-- Etiquetas contenedoras. Ayuda a generar la maquetación (layout) en el que va a existir el contenido.
             Esta estructura se llama estructura semántica. Utilizar div es mala práctica. -->
-            <header>
-                <nav></nav> <!-- Barra de navegación. -->
-            </header> <!-- Encabezado de la página. -->
+            <header> <!-- Encabezado de la página. -->
+                <nav> <!-- Barra de navegación. --> </nav>
+            </header>
 
             <main>
-                <section>
-                    <article></article> <!-- se pueden utilizar dentro de los sections. -->
+                <section> <!-- Secciones dentro del email. -->
+                    <article> <!-- se pueden utilizar dentro de los sections. --> </article>
 
-                    <ul>
-                        <li></li> <!-- Item de la lista. -->
-                    </ul> <!-- Lista desordenada. -->
+                    <ul> <!-- Lista desordenada. -->
+                        <li> <!-- Item de la lista. --> </li>
+                    </ul>
 
-                    <ol></ol> <!-- Lista ordenada. Todos los items van a estar numerados. -->
-                </section> <!-- Secciones dentro del email. -->
+                    <ol> <!-- Lista ordenada. Todos los items van a estar numerados. --> </ol>
+                </section>
+
+                <!-- Adjacent Sibling -->
+                <div>
+                    <h2>Soy un H2.</h2>
+
+                    <p>Soy un párrafo.</p>
+
+                    <h2>Soy un H2.</h2>
+                    <h3>Soy un H3.</h3>
+
+                    <p>Soy un párrafo.</p>
+
+                    <h2>Soy un H2.</h2>
+
+                    <p>Soy un párrafo.</p>
+                </div>
+
+                <!-- Child y Descendant -->
+                <div>
+                    <article>
+                        <p>Soy un texto.</p>
+                    </article>
+
+                    <article>
+                        <p>Soy un texto.</p>
+                    </article>
+
+                    <section>
+                        <div>
+                            <p>Soy un texto.</p>
+                        </div>
+                    </section>
+
+                    <p>Soy un texto</p>
+                </div>
+
             </main> <!-- Contenido principal. -->
 
             <footer></footer> <!-- Pie de página. -->

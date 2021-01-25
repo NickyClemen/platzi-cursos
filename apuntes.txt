@@ -77,9 +77,101 @@ Modelo de caja
     b) border: Define el espacio del elemento.
     c) padding: Espacio interno. Ayuda para posicionar un poco el contenido.
     d) content: Tiene un width (ancho) y un height (alto).
+    Se recalcula con border-box solamente el padding y el border. El margin no.
 
     Dependiendo del position:
         a) top: Arriba.
         b) right: Derecha.
         c) left: Izquierda.
         d) bottom: Abajo.
+
+Herencia
+    Código CSS que se le hereda de un padre a un hijo.
+    HTML tiene un tamaño de fuente definida en 16px.
+
+    Valores de herencia
+        1) inherit: Indica que debe heredar los valores de su elemento padre. Si el elemento padre no tiene definido dicho valor el navegador seguirá el DOM hasta que encuentre un elemento
+        superior que lo contenga. En caso de no tener ningún elemento superior, se aplicara el valor por defecto.
+        2) initial: Este valor pertenece a la especificación CSS3. Cuando aplicamos a una propiedad el valor initial,
+        estamos dando el valor inicial y predefinido por el navegador en cuestión.
+        3) upset: Combinación entre inherit y initial. Cuando utilizamos este valor en una propiedad, esta tratara de heredar
+        el valor de su elemento padre si este está disponible. De no ser así, este valor colocará el valor initial.
+
+Especificidad en selectores
+    Orden de declaración
+        a) Importancia
+            1) Hoja de estilo del agente de usuario (estilos del navegador).
+            2) Declaraciones normales en hojas de estilo de autor (el [file_name].css).
+            3) Declaraciones importantes en hojas de estilo de auto (!important).
+
+        b) Especificidad (izquierda es más importante - derecha menos importante)
+            1) !important: 1,0,0,0,0.
+            2) inline styles: 0,1,0,0,0.
+            3) #id: 0,0,1,0,0.
+            4) .class: 0,0,0,1,0.
+            5) tag: 0,0,0,0,1.
+
+        c) Orden de las fuentes
+            Las declaraciones al final del documento anularán a las que sucedan antes en caso de conflicto.
+
+    Si dos declaraciones tienen la misma importancia, la especificidad es la encargada de decidir cuál aplicar.
+    Si tienen la misma especificidad, el orden define los estilos.
+
+    Conflicto de declaraciones
+        Diferente de origen o !important
+            Sí -> Utiliza la declaración con el origen de mayor prioridad.
+            No -> Inline styles
+                Sí -> Utiliza inline declarations.
+                No -> Selectores con especificidad Diferente
+                    Sí -> Utiliza las declaraciones de mayor especificidad.
+                    No -> Utiliza las declaraciones que vienen en su fuente original.
+
+Combinators
+    Nos permiten combinar múltiples selectores y crear una mayor especificidad.
+        1) Hermano adyacente o cercano (Adjacent Sibling): div + p.
+        2) Hermano general (General Sibling): div ~ p.
+        3) Hijo (Child): div > p.
+        4) Descendiente (Descendant): div + p.
+
+Medidas
+    1) Relativas
+        Medida que se ajusta a la pantalla al dispositivo en el que se visualiza el proyecto.
+            a) em (element): Toma el tamaño de fuente del padre directo.
+            b) rem (root element): Siempre va a tener referencia a la etiqueta root (HTML) o root del proyecto.
+            Al poner un font-size de 62.5% en el root, hace que un 1rem sea igual a 10px.
+            El font size del HTML es de 16px.
+            c) porcentaje
+            d) max-width/max-height
+            c) min-width/min-height
+            e) vw (viewport width)/vh (viewport height)
+    2) Absolutas
+        Medida que no cambia sin importar la pantalla del proyecto.
+            a) Pixel
+
+Position
+    1) static: Default.
+    2) absolute: Pierde la posición en la línea, y se puede mover encima de lo demás. Para poder manipularlo, toma de referencia
+    el contenedor de posición relativa más cercana.
+    3) relative: Se puede mover, pero no pierde su posición en la línea.
+    4) fixed
+    5) sticky
+
+Display
+    1) block: Default. Va a usar el 100% del width que tenga disponible, sin importar si el contenido tiene o no espacio.
+    Se le puede agregar un margin en las cuatro posiciones. Se van apilando uno sobre otro.
+    2) inline: Utiliza el espacio que tenga el contenido. Permite que otro contenido se ponga adelante.
+    No se puede usar margin/padding-top/bottom, pero sí right-left. No se le puede dar width ni height.
+    3) inline-block: Se le agrega margin, padding, width y height al display inline. Toma el espacio de su contenido, y permite
+    otros elementos alineados si el espacio lo permite, sino, lo empuja hacía abajo.
+    4) flex
+
+Custom properties (variables)
+    Almacenar un valor para poder reutilizar contenido.
+
+Web fonts
+    Generic-families
+        1) serif
+        2) sans-serif
+        3) cursive
+        4) monospace
+
