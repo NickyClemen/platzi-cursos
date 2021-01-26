@@ -1,0 +1,26 @@
+@media (min-width: 800px) {
+    .cUno {
+        width: 30%;
+        order: 1;
+    }
+
+    .cDos {
+        width: 40%;
+        order: 2;
+    }
+
+    .cTres {
+        width: 30%;
+        order: 3;
+    }
+
+    .cCuatro {
+        width: 50%;
+        order: 4;
+    }
+
+    .cCinco {
+        width: 50%;
+        order: 5;
+    }
+}

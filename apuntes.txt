@@ -175,3 +175,18 @@ Web fonts
         3) cursive
         4) monospace
 
+Responsive Design
+    Breakpoint: Dimensión en el viewport en el que se va a generar el cambio (redimensionar o reacomodar los elementos).
+    Mobile first/Only: Diseño pensado en escalar desde un dispositivo móvil a desktop.
+    Una buena práctica, es ligar archivos .css por mediaquery.
+
+Patrones de maquetación en Responsive Design
+    Mostly Fluid: Empieza en columna, y se van reacomodando los contenedores mientras va creciendo la pantalla.
+    Layout Shifter: Comienza en columnas, y hay contenedores dentro de otros contenedores padre que se van reposicionando.
+    Column Drop: Empieza en vertical, y se van reposicionando los de abajo.
+
+Imágenes Responsive
+    Una buena práctica, es usar la etiqueta picture + source con mediaqueries.
+    La etiqueta con el viewport más largo, tiene que ir primero, y en orden decreciente.
+
+

@@ -1,0 +1,13 @@
+@media (min-width: 600px) {
+    .cUno {
+        width: 25%;
+    }
+
+    .cCuatro {
+        width: 75%;
+    }
+
+    .cCinco {
+        width: 100%;
+    }
+}

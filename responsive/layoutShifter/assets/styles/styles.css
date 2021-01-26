@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cUno, .cDos, .cTres, .cCuatro, .cCinco {
+    width: 100%;
+    min-width: 150px;
+    height: 150px;
+}
+
+.cUno {
+    background-color: #003476;
+}
+
+.cDos {
+    background-color: #0062d2;
+}
+
+.cTres {
+    background-color: #b4d2f7;
+}
+
+.cCuatro {
+    background-color: #d5dfef;
+    height: auto;
+}
+
+.cCinco {
+    background-color: #dfe1e5;
+}

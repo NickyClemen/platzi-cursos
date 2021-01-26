@@ -1,0 +1,20 @@
+@media (min-width: 800px) {
+    .container {
+        width: 800px;
+        margin: 0 auto;
+    }
+
+    .cUno {
+        width: 50%;
+        order: 1;
+    }
+
+    .cCuatro {
+        width: 100%;
+    }
+
+    .cCinco {
+        width: 50%;
+        order: 2;
+    }
+}
