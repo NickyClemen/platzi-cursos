@@ -128,4 +128,23 @@ Midiendo performance
         }
 
 Futuro de Nextjs
-    Incremental Static Side Generation: Mezcla entre SSR y SSG. */
+    Incremental Static Side Generation: Mezcla entre SSR y SSG.
+
+Nextjs 10
+    yarn upgrade-interactive --latest: Actualiza las dependencias.
+
+    Soporte a React 17 y Webpack 5.
+
+    Es compatible con todas las versiones.
+
+    Nextjs Image (co creado con ingenieros de Google)
+        Componente de imagen para mejorar la performance.
+        Lazzy loading: Se cargan las imágenes cuando son visibles en la pantalla.
+        Optimiza el tamaño de las imágenes según el width y height.
+
+    Link y Proxy
+        <Link key={ id } href={ `/product/${ id }` } passHref />
+
+    Rewrites: Se tiene control de las url.
+
+    Se tiene que crear en el root un next.config.js */
