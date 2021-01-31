@@ -1,0 +1,8 @@
+platzi-nextjs/node_modules
+platzi-nextjs/.next
+platzi-nextjs/*.log
+platzi-nextjs/.github
+platzi-nextjs/package-lock.json
+
+apuntes/.next
+apuntes/node_modules
