@@ -30,4 +30,4 @@ if __name__ == '__main__':
     encontrado = busqueda_binaria(lista, 0, len(lista), objetivo)
 
     print(lista)
-    print(f'El elemento {objetivo} {"está" if encontrado else "no está"} en la lista.')
+    print(f'El elemento {objetivo} {"está" if encontrado else "no está"} en la lista.') 
