@@ -1,0 +1,8 @@
+Tipos de lenguajes de programación
+    1) Procedimentales
+    2) Funcionales
+    3) Imperativos
+    4) Declarativos
+
+    Sirven para resolver problemas específicos.
+    Hay lenguajes de propósito general y DSL (domain-specific language - resuelven un problema particular).
