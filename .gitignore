@@ -1,0 +1,25 @@
+react-hooks/node_modules
+react-hooks/.pnp
+react-hooks/.pnp.js
+
+# testing
+react-hooks/coverage
+
+# production
+react-hooks/build
+
+# misc
+react-hooks/.DS_Store
+react-hooks/.env.local
+react-hooks/.env.development.local
+react-hooks/.env.test.local
+react-hooks/.env.production.local
+
+react-hooks/npm-debug.log*
+react-hooks/yarn-debug.log*
+react-hooks/yarn-error.log*
+
+platzi-conf-merch/dist/*
+
+platzi-conf-merch/node_modules/*
+platzi-conf-merch/package-lock.json
