@@ -52,13 +52,45 @@ func (EmailNotification) SendNotification() {
 	fmt.Println("Send notification via email!")
 }
 
-func (EmailNotification) GetSender() ISender [
+func (EmailNotification) GetSender() ISender {
 	return EmailNotificationSender{}
-]
+}
+
 func (EmailNotificationSender) GetSenderMethod() string {
 	return "Email"
 }
 
 func (EmailNotificationSender) GetSenderChannel() string {
 	return "SES"
+}
+
+func getNotificationFactory(notificationType string) (INotificationFactory, error) {
+	if notificationType == "SMS" {
+		return &SMSNotification{}, nil
+	}
+
+	if notificationType == "Email" {
+		return &EmailNotification{}, nil
+	}
+
+	return nil, fmt.Errorf("No notification type.")
+}
+
+func sendNotification(f INotificationFactory) {
+	f.SendNotification()
+}
+
+func getMethod(f INotificationFactory) {
+	fmt.Print(f.GetSender().GetSenderMethod())
+}
+
+func main() {
+	smsFactory, _ := getNotificationFactory("SMS")
+	emailFactory, _ := getNotificationFactory("Email")
+
+	sendNotification(smsFactory)
+	sendNotification(emailFactory)
+
+	getMethod(smsFactory)
+	getMethod(emailFactory)
 }
