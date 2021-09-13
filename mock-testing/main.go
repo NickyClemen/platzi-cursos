@@ -1,0 +1,51 @@
+package main
+
+import "time"
+
+type Person struct {
+	DNI string
+	Name string
+	Age  int
+}
+
+type Employee struct {
+	Id int
+	Position string
+}
+
+type FullTimeEmployee struct {
+	Employee
+	Person
+}
+
+var GetPersonByDNI = func(dni string) (Person, error) {
+	time.Sleep(5 * time.Second)
+	// SELECT * FROM Persona WHERE DNI=dni
+	return Person{}, nil
+}
+
+var GetEmployeeById = func(id int) (Employee, error) {
+	time.Sleep(5 * time.Second)
+	// SELECT * FROM Persona WHERE Id=id
+	return Employee{}, nil
+}
+
+func GetFullTimeEmployeeById(id int, dni string) (FullTimeEmployee, error) {
+	var ftEmployee FullTimeEmployee
+
+	idEmployee, err := GetEmployeeById(id)
+	if err != nil {
+		return ftEmployee, err
+	}
+
+	ftEmployee.Employee = idEmployee
+
+	person, err := GetPersonByDNI(dni)
+	if err != nil {
+		return ftEmployee, err
+	}
+
+	ftEmployee.Person = person
+
+	return ftEmployee, nil
+}
