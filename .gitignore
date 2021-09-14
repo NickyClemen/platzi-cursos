@@ -1,1 +1,6 @@
-./modules/main
+modules/main
+
+testing/cou.out
+testing/coverage.out
+testing/profile001.pdf
+testing/testing.test
